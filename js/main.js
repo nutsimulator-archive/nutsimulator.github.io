@@ -764,7 +764,7 @@ window.onbeforeunload = function(){
 
 window.addEventListener('resize', function(){
 		document.getElementById('innerHeight').innerHTML = window.innerHeight;
-		document.getElementById('innerWidth').innerHTML = window.innerHeight;
+		document.getElementById('innerWidth').innerHTML = window.innerWidth;
 	if(window.innerHeight > window.innerWidth && page == "index.html"){
 		window.location.href = "mobile.html";
 	} else if (window.innerHeight < window.innerWidth && page == "mobile.html"){
@@ -774,7 +774,7 @@ window.addEventListener('resize', function(){
 	}
 });
 		document.getElementById('innerHeight').innerHTML = window.innerHeight;
-		document.getElementById('innerWidth').innerHTML = window.innerHeight;
+		document.getElementById('innerWidth').innerHTML = window.innerWidth;
 
 Load();
 
