@@ -109,8 +109,7 @@ function clickAnimation() {
 	var amountAdded = document.getElementById("amountAdded");
 	var middleNutCounter = document.getElementById("middleNutCounter");
 	
-	setTimeout(function ()
-	{
+	setTimeout(function (){
 		middleNut.style.webkitAnimationName = "growStart";
 		middleNut.style.webkitAnimationDuration = "0.08s";
 		middleNut.style.webkitAnimationFillMode = "forwards";
@@ -130,8 +129,7 @@ function releaseAnimation() {
 	var amountAdded = document.getElementById("amountAdded");
 	var middleNutCounter = document.getElementById("middleNutCounter");
 	
-	setTimeout(function ()
-	{
+	setTimeout(function (){
 		middleNut.style.webkitAnimationName = "grow";
 		middleNut.style.webkitAnimationDuration = "0.3s";
 		middleNut.style.webkitAnimationFillMode = "";
@@ -143,7 +141,7 @@ function releaseAnimation() {
 		middleNutCounter.style.webkitAnimationName = "grow3";
 		middleNutCounter.style.webkitAnimationDuration = "0.3s";
 		middleNutCounter.style.webkitAnimationFillMode = "";
-	}, 0);
+	}, 30);
 }
 
 function nutClick(number){
@@ -395,28 +393,36 @@ function showMenu() {
 }
 
 function showAllBuildings(){
-	var theMenu = document.getElementsByClassName("item1")[0];
-	if(theMenu.style.width < "100px"){
-		theMenu.style.height = "75%";
-    	theMenu.style.width = "83%";
-		theMenu.style.padding = "7px 9px 7px 9px";
+	var buildingMenu = document.getElementsByClassName("item1")[0];
+	var upgradeMenu = document.getElementsByClassName("item2")[0];
+	if(buildingMenu.style.width < "100px"){
+		buildingMenu.style.height = "75%";
+    	buildingMenu.style.width = "83%";
+		buildingMenu.style.padding = "7px 9px 7px 9px";
+    	upgradeMenu.style.height = "0px";
+    	upgradeMenu.style.width = "0px";
+		upgradeMenu.style.padding = "0px 0px 0px 0px";
     } else {
-    	theMenu.style.height = "0px";
-    	theMenu.style.width = "0px";
-		theMenu.style.padding = "0px 0px 0px 0px";
+    	buildingMenu.style.height = "0px";
+    	buildingMenu.style.width = "0px";
+		buildingMenu.style.padding = "0px 0px 0px 0px";
     }
 }
 
 function showAllUpgrades(){
-	var theMenu = document.getElementsByClassName("item2")[0];
-	if(theMenu.style.width < "100px"){
-		theMenu.style.height = "75%";
-    	theMenu.style.width = "83%";
-		theMenu.style.padding = "7px 9px 7px 9px";
+	var buildingMenu = document.getElementsByClassName("item1")[0];
+	var upgradeMenu = document.getElementsByClassName("item2")[0];
+	if(upgradeMenu.style.width < "100px"){
+		upgradeMenu.style.height = "75%";
+    	upgradeMenu.style.width = "83%";
+		upgradeMenu.style.padding = "7px 9px 7px 9px";
+    	buildingMenu.style.height = "0px";
+    	buildingMenu.style.width = "0px";
+		buildingMenu.style.padding = "0px 0px 0px 0px";
     } else {
-    	theMenu.style.height = "0px";
-    	theMenu.style.width = "0px";
-		theMenu.style.padding = "0px 0px 0px 0px";
+    	upgradeMenu.style.height = "0px";
+    	upgradeMenu.style.width = "0px";
+		upgradeMenu.style.padding = "0px 0px 0px 0px";
     }
 }
 //saving
