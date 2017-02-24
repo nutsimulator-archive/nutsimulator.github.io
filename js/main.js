@@ -744,7 +744,9 @@ function CheckAmounts(){
 		for (var i=0;i<classes.length;i++) {
 			classes[i].style.display = '';
 		}
-		document.getElementById('things').style.display = "";
+		if(document.getElementById('things').style.display != "null"){
+			document.getElementById('things').style.display = "";
+		}
 		
 		var leftpanel = document.getElementsByClassName("item1")[0];
 		leftpanel.style.padding = "20px 25px 20px 25px";
@@ -937,6 +939,7 @@ window.onbeforeunload = function(){
 }
 
 window.addEventListener('resize', function(){
+	Save();
 	if(window.innerHeight > window.innerWidth && page == "index.html"){
 		window.location.href = "mobile.html";
 	} else if (window.innerHeight < window.innerWidth && page == "mobile.html"){
@@ -947,9 +950,11 @@ window.addEventListener('resize', function(){
 });
 
 //disable pointer cursor on hidden menu buttons
-document.getElementById('menuButton').style.cursor = "default";
-document.getElementById('menuButton2').style.cursor = "default";
-document.getElementById('menuButton3').style.cursor = "default";
+if(page != "mobile.html"){
+	document.getElementById('menuButton').style.cursor = "default";
+	document.getElementById('menuButton2').style.cursor = "default";
+	document.getElementById('menuButton3').style.cursor = "default";
+}
 
 Load();
 
@@ -965,8 +970,10 @@ toggleMusic();
 toggleAudio();
 toggleAudio();
 
-document.getElementById('customImage').onchange = function() {
-    var imageFile = this.files[0];
-    var url = window.URL.createObjectURL(imageFile);
-    document.getElementById("middleNut").src = url;
+if(page != "mobile.html"){
+	document.getElementById('customImage').onchange = function() {
+		var imageFile = this.files[0];
+		var url = window.URL.createObjectURL(imageFile);
+		document.getElementById("middleNut").src = url;
+	}
 }
