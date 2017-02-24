@@ -61,6 +61,40 @@ var nutGalacticReignDamage = 260000;
 var deezNutGuyDamage = 16000000;
 var totalDamage = 0;
 
+var buyAudio = new Audio('audio/buy.wav');
+var cantBuyAudio = new Audio('audio/cantbuy.wav');
+var clickAudio = new Audio('audio/click.wav');
+var music = new Audio('audio/sneakysnitch.mp3');
+var audioMuted = false;
+var musicMuted = false;
+
+music.play();
+music.loop=true;
+
+function toggleAudio(){
+	if(!audioMuted){
+		clickAudio.muted = true;
+		buyAudio.muted = true;
+		cantBuyAudio.muted = true;
+		audioMuted = true;
+	} else {
+		clickAudio.muted = false;
+		buyAudio.muted = false;
+		cantBuyAudio.muted = false;
+		audioMuted = false;
+	}
+}
+
+function toggleMusic(){
+	if(!musicMuted){
+		music.muted = true;
+		musicMuted = true;
+	} else {
+		music.muted = false;
+		musicMuted = false;
+	}
+}
+
 //var x = "Total Width: " + screen.width;
 //document.getElementById('width').innerHTML = x;
 
@@ -98,6 +132,8 @@ function round(input){
 
 function clickOnButton(){
 	if(!pressed){
+		stopAudio(clickAudio);
+		clickAudio.play();
 		GreyOutButtons();
 		nuts = round(nuts + clickDamage);
 		document.getElementById("nuts").innerHTML = kFormatter(round(nuts));
@@ -210,6 +246,11 @@ function buy(building){
 				UpdateDamage();
 				document.getElementById('totalDamage').innerHTML = totalDamage;
 				UpdateCosts();
+				stopAudio(buyAudio);
+				buyAudio.play();
+			} else {
+				stopAudio(cantBuyAudio);
+				cantBuyAudio.play();
 			}
 		break;
 		
@@ -222,6 +263,11 @@ function buy(building){
 				UpdateDamage();
 				document.getElementById('totalDamage').innerHTML = totalDamage;
 				UpdateCosts();
+				stopAudio(buyAudio);
+				buyAudio.play();
+			} else {
+				stopAudio(cantBuyAudio);
+				cantBuyAudio.play();
 			}
 		break;
 		
@@ -235,6 +281,11 @@ function buy(building){
 				UpdateDamage();
 				document.getElementById('totalDamage').innerHTML = totalDamage;
 				UpdateCosts();
+				stopAudio(buyAudio);
+				buyAudio.play();
+			} else {
+				stopAudio(cantBuyAudio);
+				cantBuyAudio.play();
 			}
 		break;
 		
@@ -245,7 +296,12 @@ function buy(building){
 				nuts = nuts - clickCost;
 				UpdateValues();
 				UpdateCosts();
-			}					
+				stopAudio(buyAudio);
+				buyAudio.play();
+			} else {
+				stopAudio(cantBuyAudio);
+				cantBuyAudio.play();
+			}
 		break;
 		
 		case "clickUpgrade2":
@@ -255,7 +311,12 @@ function buy(building){
 				nuts = nuts - clickCost2;
 				UpdateValues();
 				UpdateCosts();
-			}					
+				stopAudio(buyAudio);
+				buyAudio.play();
+			} else {
+				stopAudio(cantBuyAudio);
+				cantBuyAudio.play();
+			}
 		break;
 		
 		case "nutMan":
@@ -267,7 +328,12 @@ function buy(building){
 				UpdateDamage();
 				document.getElementById('totalDamage').innerHTML = totalDamage;
 				UpdateCosts();
-			}                                                 
+				stopAudio(buyAudio);
+				buyAudio.play();
+			} else {
+				stopAudio(cantBuyAudio);
+				cantBuyAudio.play();
+			}                        
 		break;
 		
 		case "nutFarm":
@@ -279,6 +345,11 @@ function buy(building){
 				UpdateDamage();
 				document.getElementById('totalDamage').innerHTML = totalDamage;
 				UpdateCosts();
+				stopAudio(buyAudio);
+				buyAudio.play();
+			} else {
+				stopAudio(cantBuyAudio);
+				cantBuyAudio.play();
 			}
 		break;
 		
@@ -301,6 +372,11 @@ function buy(building){
 				UpdateDamage();
 				document.getElementById('totalDamage').innerHTML = totalDamage;
 				UpdateCosts();
+				stopAudio(buyAudio);
+				buyAudio.play();
+			} else {
+				stopAudio(cantBuyAudio);
+				cantBuyAudio.play();
 			}
 		break;
 		
@@ -313,6 +389,11 @@ function buy(building){
 				UpdateDamage();
 				document.getElementById('totalDamage').innerHTML = totalDamage;
 				UpdateCosts();
+				stopAudio(buyAudio);
+				buyAudio.play();
+			} else {
+				stopAudio(cantBuyAudio);
+				cantBuyAudio.play();
 			}
 		break;
 		
@@ -325,6 +406,11 @@ function buy(building){
 				UpdateDamage();
 				document.getElementById('totalDamage').innerHTML = totalDamage;
 				UpdateCosts();
+				stopAudio(buyAudio);
+				buyAudio.play();
+			} else {
+				stopAudio(cantBuyAudio);
+				cantBuyAudio.play();
 			}
 		break;
 		
@@ -337,6 +423,11 @@ function buy(building){
 				UpdateDamage();
 				document.getElementById('totalDamage').innerHTML = totalDamage;
 				UpdateCosts();
+				stopAudio(buyAudio);
+				buyAudio.play();
+			} else {
+				stopAudio(cantBuyAudio);
+				cantBuyAudio.play();
 			}
 		break;
 		
@@ -349,6 +440,11 @@ function buy(building){
 				UpdateDamage();
 				document.getElementById('totalDamage').innerHTML = totalDamage;
 				UpdateCosts();
+				stopAudio(buyAudio);
+				buyAudio.play();
+			} else {
+				stopAudio(cantBuyAudio);
+				cantBuyAudio.play();
 			}
 		break;
 		
@@ -361,6 +457,11 @@ function buy(building){
 				UpdateDamage();
 				document.getElementById('totalDamage').innerHTML = totalDamage;
 				UpdateCosts();
+				stopAudio(buyAudio);
+				buyAudio.play();
+			} else {
+				stopAudio(cantBuyAudio);
+				cantBuyAudio.play();
 			}
 		break;
 		
@@ -373,6 +474,11 @@ function buy(building){
 				UpdateDamage();
 				document.getElementById('totalDamage').innerHTML = totalDamage;
 				UpdateCosts();
+				stopAudio(buyAudio);
+				buyAudio.play();
+			} else {
+				stopAudio(cantBuyAudio);
+				cantBuyAudio.play();
 			}
 		break;
 	}
@@ -395,11 +501,27 @@ window.setInterval(function(){
 }, 5000);
 
 function showMenu() {
-	var menu = document.getElementById('menu')
-    if(menu.style.display === 'none') {
-        menu.style.display = 'inline';
+	var menu = document.getElementById('menu');
+	if(menu.style.left < "150px"){
+    	menu.style.opacity = "1";
+		menu.style.height = "75%";
+		menu.style.left = "150px";
+		document.getElementById('menuButton').style.cursor = "pointer";
+		document.getElementById('menuButton2').style.cursor = "pointer";
+		document.getElementById('menuButton3').style.cursor = "pointer";
+		document.getElementById('menuButton').disabled = false;
+		document.getElementById('menuButton2').disabled = false;
+		document.getElementById('menuButton3').disabled = false;
     } else {
-        menu.style.display = 'none';
+    	menu.style.height = "0px";
+		menu.style.left = "130px";
+    	menu.style.opacity = "0";
+		document.getElementById('menuButton').style.cursor = "default";
+		document.getElementById('menuButton2').style.cursor = "default";
+		document.getElementById('menuButton3').style.cursor = "default";
+		document.getElementById('menuButton').disabled = true;
+		document.getElementById('menuButton2').disabled = true;
+		document.getElementById('menuButton3').disabled = true;
     }
 }
 
@@ -436,6 +558,22 @@ function showAllUpgrades(){
 		upgradeMenu.style.padding = "0px 0px 0px 0px";
     }
 }
+
+function uploadHover(){
+	var uploadLabel = document.getElementById("uploadLabel");
+	var uploadIcon = document.getElementById("uploadIcon");
+	uploadLabel.style.height = "50px";
+    uploadLabel.style.width = "370px";
+	uploadIcon.style.top = "10%";
+}
+
+function uploadLeave(){
+	var uploadLabel = document.getElementById("uploadLabel");
+    uploadLabel.style.height = "40px";
+    uploadLabel.style.width = "25px";
+	uploadIcon.style.top = "5%";
+}
+
 //saving
 
 function Save(){
@@ -460,7 +598,9 @@ function Save(){
 		's': s,
 		'm': m,
 		'h': h,
-		'totalDamage': totalDamage
+		'totalDamage': totalDamage,
+		'audioMuted': audioMuted,
+		'musicMuted': musicMuted
 	}
 	localStorage.setItem("save",JSON.stringify(save));
 }
@@ -501,6 +641,8 @@ function Load(){
 	if (typeof savegame.h !== "undefined") h = savegame.h;
 	if (typeof savegame.timeSinceStart !== "undefined") timeSinceStart = savegame.timeSinceStart;
 	if (typeof savegame.totalDamage !== "undefined") totalDamage = savegame.totalDamage;
+	if (typeof savegame.audioMuted !== "undefined") audioMuted = savegame.audioMuted;
+	if (typeof savegame.musicMuted !== "undefined") musicMuted = savegame.musicMuted;
     document.getElementById('time').innerHTML = "played for " + h + ":" + m + ":" + s;
 	UpdateValues();
 	UpdateCosts();
@@ -510,61 +652,79 @@ function GreyOutButtons(){
 	if(nuts < nutKidCostNext){
 		document.getElementsByClassName('buyNutKid')[1].style.webkitFilter = "brightness(70%)";
 	} else if (nuts >= nutKidCostNext){
-		document.getElementsByClassName('buyNutKid')[1].style.webkitFilter = "brightness(100%)";
+		document.getElementsByClassName('buyNutKid')[1].style.webkitFilter = "";
 	}
 	
 	if(nuts < nutBoyCostNext){
 		document.getElementsByClassName('buyNutBoy')[1].style.webkitFilter = "brightness(70%)";
 	} else if (nuts >= nutBoyCostNext){
-		document.getElementsByClassName('buyNutBoy')[1].style.webkitFilter = "brightness(100%)";
+		document.getElementsByClassName('buyNutBoy')[1].style.webkitFilter = "";
 	}
 	
 	if(nuts < nutManCostNext){
 		document.getElementsByClassName('buyNutMan')[1].style.webkitFilter = "brightness(70%)";
 	} else if (nuts >= nutManCostNext){
-		document.getElementsByClassName('buyNutMan')[1].style.webkitFilter = "brightness(100%)";
+		document.getElementsByClassName('buyNutMan')[1].style.webkitFilter = "";
 	}
 	
 	if(nuts < nutFarmCostNext){
 		document.getElementsByClassName('buyNutFarm')[1].style.webkitFilter = "brightness(70%)";
 	} else if (nuts >= nutFarmCostNext){
-		document.getElementsByClassName('buyNutFarm')[1].style.webkitFilter = "brightness(100%)";
+		document.getElementsByClassName('buyNutFarm')[1].style.webkitFilter = "";
 	}
 	
 	if(nuts < nutFactoryCostNext){
 		document.getElementsByClassName('buyNutFactory')[1].style.webkitFilter = "brightness(70%)";
 	} else if (nuts >= nutFactoryCostNext){
-		document.getElementsByClassName('buyNutFactory')[1].style.webkitFilter = "brightness(100%)";
+		document.getElementsByClassName('buyNutFactory')[1].style.webkitFilter = "";
 	}	
 	
 	if(nuts < nutBankCostNext){
 		document.getElementsByClassName('buyNutBank')[1].style.webkitFilter = "brightness(70%)";
 	} else if (nuts >= nutBankCostNext){
-		document.getElementsByClassName('buyNutBank')[1].style.webkitFilter = "brightness(100%)";
+		document.getElementsByClassName('buyNutBank')[1].style.webkitFilter = "";
 	}	
 	
 	if(nuts < nutEmpireCostNext){
 		document.getElementsByClassName('buyNutEmpire')[1].style.webkitFilter = "brightness(70%)";
 	} else if (nuts >= nutEmpireCostNext){
-		document.getElementsByClassName('buyNutEmpire')[1].style.webkitFilter = "brightness(100%)";
+		document.getElementsByClassName('buyNutEmpire')[1].style.webkitFilter = "";
 	}	
 	
 	if(nuts < nutWorldControlCostNext){
 		document.getElementsByClassName('buyNutWorldControl')[1].style.webkitFilter = "brightness(70%)";
 	} else if (nuts >= nutWorldControlCostNext){
-		document.getElementsByClassName('buyNutWorldControl')[1].style.webkitFilter = "brightness(100%)";
+		document.getElementsByClassName('buyNutWorldControl')[1].style.webkitFilter = "";
 	}	
 	
 	if(nuts < nutGalacticReignCostNext){
 		document.getElementsByClassName('buyNutGalacticReign')[1].style.webkitFilter = "brightness(70%)";
 	} else if (nuts >= nutGalacticReignCostNext){
-		document.getElementsByClassName('buyNutGalacticReign')[1].style.webkitFilter = "brightness(100%)";
-	}	
+		document.getElementsByClassName('buyNutGalacticReign')[1].style.webkitFilter = "";
+	}
 	
 	if(nuts < deezNutGuyCostNext){
 		document.getElementsByClassName('buyDeezNutGuy')[1].style.webkitFilter = "brightness(70%)";
 	} else if (nuts >= deezNutGuyCostNext){
-		document.getElementsByClassName('buyDeezNutGuy')[1].style.webkitFilter = "brightness(100%)";
+		document.getElementsByClassName('buyDeezNutGuy')[1].style.webkitFilter = "";
+	}
+	
+	if(nuts < nutBoyBonusCostNext){
+		document.getElementsByClassName('buyNutBoyBonus')[1].style.webkitFilter = "brightness(70%)";
+	} else if (nuts >= nutBoyBonusCostNext){
+		document.getElementsByClassName('buyNutBoyBonus')[1].style.webkitFilter = "";
+	}
+	
+	if(nuts < clickUpgradeCostNext){
+		document.getElementsByClassName('buyClick')[1].style.webkitFilter = "brightness(70%)";
+	} else if (nuts >= clickUpgradeCostNext){
+		document.getElementsByClassName('buyClick')[1].style.webkitFilter = "";
+	}
+	
+	if(nuts < clickUpgrade2CostNext){
+		document.getElementsByClassName('buyClick2')[1].style.webkitFilter = "brightness(70%)";
+	} else if (nuts >= clickUpgrade2CostNext){
+		document.getElementsByClassName('buyClick2')[1].style.webkitFilter = "";
 	}
 }
 
@@ -738,6 +898,11 @@ function UpdateDamage(){
 	totalDamage = round(nutKidDamage * nutKids + nutBoyDamage * nutBoys + nutManDamage * nutMen + nutFarmDamage * nutFarms + nutFactoryDamage * nutFactories + nutBankDamage * nutBanks + nutEmpireDamage * nutEmpires + nutWorldControlDamage * nutWorldControls + nutGalacticReignDamage * nutGalacticReigns + deezNutGuyDamage * deezNutGuys);
 }
 
+function stopAudio(audio){
+		audio.pause();
+		audio.currentTime = 0;
+}
+
 document.body.onkeydown = function(e){
     if(e.keyCode == 32){
 		clickAnimation();
@@ -772,6 +937,27 @@ window.addEventListener('resize', function(){
 	}
 });
 
+//disable pointer cursor on hidden menu buttons
+document.getElementById('menuButton').style.cursor = "default";
+document.getElementById('menuButton2').style.cursor = "default";
+document.getElementById('menuButton3').style.cursor = "default";
+
 Load();
 
-CheckAmounts();
+//check if enough nuts to unlock things
+CheckAmounts();	
+
+//fix stupid animation
+releaseAnimation();
+
+//mute twice to get value from save
+toggleMusic();
+toggleMusic();
+toggleAudio();
+toggleAudio();
+
+document.getElementById('customImage').onchange = function() {
+    var imageFile = this.files[0];
+    var url = window.URL.createObjectURL(imageFile);
+    document.getElementById("middleNut").src = url;
+}
