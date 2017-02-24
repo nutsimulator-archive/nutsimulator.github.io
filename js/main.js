@@ -29,6 +29,10 @@ s = checkTime(s);
 m = checkTime(m);
 var pressed = false;
 var deleted = false;
+var landscape = true;
+
+var url = window.location.pathname;
+var page = url.substring(url.lastIndexOf('/') + 1);
 
 var nutKidCostNext = 0;
 var nutBoyCostNext = 0;
@@ -375,6 +379,13 @@ function buy(building){
 	GreyOutButtons();
 	document.getElementById("damageAdded").innerHTML = "+ " + kFormatter(totalDamage) + "/sec";
 	Save();
+	document.getElementById('upgrades').style.display = "";
+	document.getElementById('damage').style.display = "";
+	document.getElementById('clickBonusText').style.display = "";
+	document.getElementById('line2').style.display = "";
+	
+	var leftpanel = document.getElementsByClassName("item2")[0];
+	leftpanel.style.padding = "20px 25px 20px 25px";
 }
 
 window.setInterval(function(){
@@ -560,31 +571,44 @@ function GreyOutButtons(){
 function CheckAmounts(){	
 	GreyOutButtons();
 	if(nuts >= 15 || nutKids >= 1) {		
-		var classes = document.getElementsByClassName('buyNutKid')
+		var classes = document.getElementsByClassName('buyNutKid');
 		for (var i=0;i<classes.length;i++) {
 			classes[i].style.display = '';
 		}
-    }
+		document.getElementById('line').style.display = "";
+		document.getElementById('things').style.display = "";
+		
+		var leftpanel = document.getElementsByClassName("item1")[0];
+		leftpanel.style.padding = "20px 25px 20px 25px";
+	}
+	
 	if(nuts >= 50 || nutBoys >= 1) {
-		var classes = document.getElementsByClassName('buyNutBoy')
+		var classes = document.getElementsByClassName('buyNutBoy');
 		for (var i=0;i<classes.length;i++) {
 			classes[i].style.display = '';
 		}
     }
 	if (nuts >= 100 || nutBoyBonuses >= 1) {
-		var classes = document.getElementsByClassName('buyNutBoyBonus')
+		var classes = document.getElementsByClassName('buyNutBoyBonus');
 		for (var i=0;i<classes.length;i++) {
 			classes[i].style.display = '';
 		}
+		document.getElementById('upgrades').style.display = "";
+		document.getElementById('damage').style.display = "";
+		document.getElementById('clickBonusText').style.display = "";
+		document.getElementById('line2').style.display = "";
+		
+		var leftpanel = document.getElementsByClassName("item2")[0];
+		leftpanel.style.padding = "20px 25px 20px 25px";
     }
 	if(nuts >= 300 || clickUpgrades >= 1) {
-		var classes = document.getElementsByClassName('buyClick')
+		var classes = document.getElementsByClassName('buyClick');
 		for (var i=0;i<classes.length;i++) {
 			classes[i].style.display = '';
 		}
     }
 	if(nuts >= 5000 || clickUpgrades2 >= 1) {
-		var classes = document.getElementsByClassName('buyClick2')
+		var classes = document.getElementsByClassName('buyClick2');
 		for (var i=0;i<classes.length;i++) {
 			classes[i].style.display = '';
 		}
@@ -738,6 +762,14 @@ window.onbeforeunload = function(){
 		Save();
 	}
 }
+
+window.addEventListener('resize', function(){
+	if(window.innerHeight > window.innerWidth && page == "index.html"){
+		window.location.href = "mobile.html";
+	} else if (window.innerHeight < window.innerWidth && page == "mobile.html"){
+		window.location.href = "index.html";
+	}
+});
 
 Load();
 
