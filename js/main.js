@@ -763,18 +763,14 @@ window.onbeforeunload = function(){
 }
 
 window.addEventListener('resize', function(){
-		document.getElementById('innerHeight').innerHTML = window.innerHeight;
-		document.getElementById('innerWidth').innerHTML = window.innerWidth;
 	if(window.innerHeight > window.innerWidth && page == "index.html"){
 		window.location.href = "mobile.html";
 	} else if (window.innerHeight < window.innerWidth && page == "mobile.html"){
 		window.location.href = "index.html";
-	} else if (window.innerHeight > window.innerWidth && page == "nutsimulator.github.io"){
+	} else if (window.innerHeight > window.innerWidth && page == ""){
 		window.location.href = "mobile.html";
 	}
 });
-		document.getElementById('innerHeight').innerHTML = window.innerHeight;
-		document.getElementById('innerWidth').innerHTML = window.innerWidth;
 
 Load();
 

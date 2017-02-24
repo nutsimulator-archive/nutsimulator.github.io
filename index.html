@@ -7,7 +7,13 @@
 		<title>nut simulator</title>
 		<meta name="description" content="grow your nut empire">
 		<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
-
+		<script>
+		var url = window.location.pathname;
+		var page = url.substring(url.lastIndexOf('/') + 1);
+		if(page != "index.html"){
+			window.location.href = "index.html"
+		}
+		</script>
 	</head>
 	<body>
 		<div id="container">
@@ -18,11 +24,6 @@
 				<div id="time">
 					played for 0:00:00
 				</div>
-				height = <span id="innerHeight"></span>
-				width  = <span id="innerWidth"></span>
-				<!--<div id="width">
-				screen width:
-				</div>-->
 				<span id="middleNutCounter">Nuts: <span id="nuts">0</span> <span style="position:relative;bottom:5px;align:left;font-size:1vw" id="damageAdded">+ 0/sec</span></span>
 				<div class="textContainer">
 					<div class="item1">
