@@ -525,6 +525,15 @@ function showMenu() {
     }
 }
 
+function showMenuOld() {
+	var menu = document.getElementById('menu')
+    if(menu.style.display === 'none') {
+        menu.style.display = 'inline';
+    } else {
+        menu.style.display = 'none';
+    }
+}
+
 function showAllBuildings(){
 	var buildingMenu = document.getElementsByClassName("item1")[0];
 	var upgradeMenu = document.getElementsByClassName("item2")[0];
