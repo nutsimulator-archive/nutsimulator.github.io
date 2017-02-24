@@ -143,8 +143,9 @@ main {
     width: 0px;
     position: fixed;
     z-index: 1;
-    overflow: hidden;
+    overflow-x: hidden;
     transition: 0.5s;
+	margin-top:10px;
 }
 
 .item2 {
@@ -159,8 +160,9 @@ main {
     width: 0px;
     position: fixed;
     z-index: 1;
-    overflow: hidden;
+    overflow-x: hidden;
     transition: 0.5s;
+	margin-top:10px;
 }
 
 
