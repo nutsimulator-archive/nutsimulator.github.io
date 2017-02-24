@@ -7,11 +7,15 @@
 		<title>nut simulator</title>
 		<meta name="description" content="grow your nut empire">
 		<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
-		<script>
+		<script type="text/javascript">
 		var url = window.location.pathname;
 		var page = url.substring(url.lastIndexOf('/') + 1);
 		if(page != "index.html"){
 			window.location.href = "index.html"
+		}
+		
+		if(window.innerHeight > window.innerWidth){
+			window.location.href = "mobile.html";
 		}
 		</script>
 	</head>
