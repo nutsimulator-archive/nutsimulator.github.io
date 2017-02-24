@@ -409,7 +409,7 @@ function showAllBuildings(){
 	if(buildingMenu.style.width < "100px"){
 		buildingMenu.style.height = "75%";
     	buildingMenu.style.width = "83%";
-		buildingMenu.style.padding = "7px 9px 7px 9px";
+		buildingMenu.style.padding = "15px 15px 15px 15px";
     	upgradeMenu.style.height = "0px";
     	upgradeMenu.style.width = "0px";
 		upgradeMenu.style.padding = "0px 0px 0px 0px";
@@ -426,7 +426,7 @@ function showAllUpgrades(){
 	if(upgradeMenu.style.width < "100px"){
 		upgradeMenu.style.height = "75%";
     	upgradeMenu.style.width = "83%";
-		upgradeMenu.style.padding = "7px 9px 7px 9px";
+		upgradeMenu.style.padding = "15px 15px 15px 15px";
     	buildingMenu.style.height = "0px";
     	buildingMenu.style.width = "0px";
 		buildingMenu.style.padding = "0px 0px 0px 0px";
@@ -575,7 +575,6 @@ function CheckAmounts(){
 		for (var i=0;i<classes.length;i++) {
 			classes[i].style.display = '';
 		}
-		document.getElementById('line').style.display = "";
 		document.getElementById('things').style.display = "";
 		
 		var leftpanel = document.getElementsByClassName("item1")[0];
@@ -764,6 +763,8 @@ window.onbeforeunload = function(){
 }
 
 window.addEventListener('resize', function(){
+		document.getElementById('innerHeight').innerHTML = window.innerHeight;
+		document.getElementById('innerWidth').innerHTML = window.innerHeight;
 	if(window.innerHeight > window.innerWidth && page == "index.html"){
 		window.location.href = "mobile.html";
 	} else if (window.innerHeight < window.innerWidth && page == "mobile.html"){
@@ -772,6 +773,8 @@ window.addEventListener('resize', function(){
 		window.location.href = "mobile.html";
 	}
 });
+		document.getElementById('innerHeight').innerHTML = window.innerHeight;
+		document.getElementById('innerWidth').innerHTML = window.innerHeight;
 
 Load();
 
