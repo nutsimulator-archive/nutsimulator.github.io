@@ -762,13 +762,6 @@ window.onbeforeunload = function(){
 	}
 }
 
-if(window.innerHeight > window.innerWidth && page == "index.html"){
-	window.location.href = "mobile.html";
-} else if (window.innerHeight < window.innerWidth && page == "mobile.html"){
-	window.location.href = "index.html";
-} else if (window.innerHeight > window.innerWidth && page == ""){
-	window.location.href = "mobile.html";
-}
 window.addEventListener('resize', function(){
 	if(window.innerHeight > window.innerWidth && page == "index.html"){
 		window.location.href = "mobile.html";
