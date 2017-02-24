@@ -768,6 +768,8 @@ window.addEventListener('resize', function(){
 		window.location.href = "mobile.html";
 	} else if (window.innerHeight < window.innerWidth && page == "mobile.html"){
 		window.location.href = "index.html";
+	} else if (window.innerHeight > window.innerWidth && page == "nutsimulator.github.io"){
+		window.location.href = "mobile.html";
 	}
 });
 
