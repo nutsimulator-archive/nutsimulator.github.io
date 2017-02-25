@@ -125,7 +125,7 @@ main {
 	pointer-events: none;
 	position: relative;
 	text-align: center;
-	bottom: 14vw;
+	bottom: 12.5vw;
 	font-family: 'Oswald', sans-serif;
 	font-size: 1.5vw;
     -webkit-transform: translateZ(0);

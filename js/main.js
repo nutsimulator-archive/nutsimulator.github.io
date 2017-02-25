@@ -71,6 +71,11 @@ var musicMuted = false;
 music.play();
 music.loop=true;
 
+function stopAudio(audio){
+		audio.pause();
+		audio.currentTime = 0;
+}
+
 function toggleAudio(){
 	if(!audioMuted){
 		clickAudio.muted = true;
@@ -909,13 +914,9 @@ function UpdateDamage(){
 	totalDamage = round(nutKidDamage * nutKids + nutBoyDamage * nutBoys + nutManDamage * nutMen + nutFarmDamage * nutFarms + nutFactoryDamage * nutFactories + nutBankDamage * nutBanks + nutEmpireDamage * nutEmpires + nutWorldControlDamage * nutWorldControls + nutGalacticReignDamage * nutGalacticReigns + deezNutGuyDamage * deezNutGuys);
 }
 
-function stopAudio(audio){
-		audio.pause();
-		audio.currentTime = 0;
-}
-
 document.body.onkeydown = function(e){
     if(e.keyCode == 32){
+        event.preventDefault();
 		clickAnimation();
 		if(!pressed){
 			clickOnButton();
