@@ -172,7 +172,6 @@ main {
 #customImage:focus + label,
 #customImage + label:hover {
     background-color: #e23131;
-	filter: drop-shadow(0px 0px 7px #F64747);
 }
 
 .item1 {

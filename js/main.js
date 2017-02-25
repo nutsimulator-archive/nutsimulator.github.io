@@ -67,6 +67,12 @@ var clickAudio = new Audio('audio/click.wav');
 var music = new Audio('audio/sneakysnitch.mp3');
 var audioMuted = false;
 var musicMuted = false;
+var musicProgress = 0;
+
+var nutBoyUpgradeShown = false;
+var clickUpgradeShown = false;
+var click2UpgradeShown = false;
+var allUpgradeShown = false;
 
 music.play();
 music.loop=true;
@@ -277,7 +283,7 @@ function buy(building){
 		break;
 		
 		case "buyNutBoyBonus":
-			var nutBoyBonusCost = Math.floor(100 * Math.pow(3,nutBoyBonuses));
+			var nutBoyBonusCost = Math.floor(100 * Math.pow(5,nutBoyBonuses));
 			if(nuts >= nutBoyBonusCost){
 				nutBoyBonuses = nutBoyBonuses + 1;
 				nuts = nuts - nutBoyBonusCost;
@@ -310,7 +316,7 @@ function buy(building){
 		break;
 		
 		case "clickUpgrade2":
-			var clickCost2 = Math.floor(5000 * Math.pow(3,clickUpgrades2));
+			var clickCost2 = Math.floor(5000 * Math.pow(5,clickUpgrades2));
 			if(nuts >= clickCost2){
 				clickUpgrades2 = clickUpgrades2 + 1;
 				nuts = nuts - clickCost2;
@@ -490,13 +496,15 @@ function buy(building){
 	GreyOutButtons();
 	document.getElementById("damageAdded").innerHTML = "+ " + kFormatter(totalDamage) + "/sec";
 	Save();
-	document.getElementById('upgrades').style.display = "";
-	document.getElementById('damage').style.display = "";
-	document.getElementById('clickBonusText').style.display = "";
-	document.getElementById('line2').style.display = "";
+	if(page != "mobile.html"){
+		document.getElementById('upgrades').style.display = "";
+		document.getElementById('damage').style.display = "";
+		document.getElementById('clickBonusText').style.display = "";
+		document.getElementById('line2').style.display = "";
 	
-	var leftpanel = document.getElementsByClassName("item2")[0];
-	leftpanel.style.padding = "20px 25px 20px 25px";
+		var leftpanel = document.getElementsByClassName("item2")[0];
+		leftpanel.style.padding = "20px 25px 20px 25px";
+	}
 }
 
 window.setInterval(function(){
@@ -507,27 +515,53 @@ window.setInterval(function(){
 
 function showMenu() {
 	var menu = document.getElementById('menu');
-	if(menu.style.left < "150px"){
-    	menu.style.opacity = "1";
-		menu.style.height = "75%";
-		menu.style.left = "150px";
-		document.getElementById('menuButton').style.cursor = "pointer";
-		document.getElementById('menuButton2').style.cursor = "pointer";
-		document.getElementById('menuButton3').style.cursor = "pointer";
-		document.getElementById('menuButton').disabled = false;
-		document.getElementById('menuButton2').disabled = false;
-		document.getElementById('menuButton3').disabled = false;
-    } else {
-    	menu.style.height = "0px";
-		menu.style.left = "130px";
-    	menu.style.opacity = "0";
-		document.getElementById('menuButton').style.cursor = "default";
-		document.getElementById('menuButton2').style.cursor = "default";
-		document.getElementById('menuButton3').style.cursor = "default";
-		document.getElementById('menuButton').disabled = true;
-		document.getElementById('menuButton2').disabled = true;
-		document.getElementById('menuButton3').disabled = true;
-    }
+	if(page != "mobile.html"){
+		console.log(menu.style.left);
+		if(menu.style.left < "150px"){
+			menu.style.opacity = "1";
+			menu.style.height = "75%";
+			menu.style.left = "150px";
+			document.getElementById('menuButton').style.cursor = "pointer";
+			document.getElementById('menuButton2').style.cursor = "pointer";
+			document.getElementById('menuButton3').style.cursor = "pointer";
+			document.getElementById('menuButton').disabled = false;
+			document.getElementById('menuButton2').disabled = false;
+			document.getElementById('menuButton3').disabled = false;
+		} else {
+			menu.style.height = "0px";
+			menu.style.left = "130px";
+			menu.style.opacity = "0";
+			document.getElementById('menuButton').style.cursor = "default";
+			document.getElementById('menuButton2').style.cursor = "default";
+			document.getElementById('menuButton3').style.cursor = "default";
+			document.getElementById('menuButton').disabled = true;
+			document.getElementById('menuButton2').disabled = true;
+			document.getElementById('menuButton3').disabled = true;
+		}
+	} else {
+		console.log(menu.style.left);
+		if(menu.style.left > "100px"){
+			menu.style.opacity = "1";
+			menu.style.height = "30px";
+			menu.style.left = "100px";
+			document.getElementById('menuButton').style.cursor = "pointer";
+			document.getElementById('menuButton2').style.cursor = "pointer";
+			document.getElementById('menuButton3').style.cursor = "pointer";
+			document.getElementById('menuButton').disabled = false;
+			document.getElementById('menuButton2').disabled = false;
+			document.getElementById('menuButton3').disabled = false;
+		} else {
+			menu.style.opacity = "0";
+			menu.style.height = "0px";
+			menu.style.left = "85px";
+			document.getElementById('menuButton').style.cursor = "default";
+			document.getElementById('menuButton2').style.cursor = "default";
+			document.getElementById('menuButton3').style.cursor = "default";
+			document.getElementById('menuButton').disabled = true;
+			document.getElementById('menuButton2').disabled = true;
+			document.getElementById('menuButton3').disabled = true;
+		}
+	}
 }
 
 function showMenuOld() {
@@ -543,8 +577,8 @@ function showAllBuildings(){
 	var buildingMenu = document.getElementsByClassName("item1")[0];
 	var upgradeMenu = document.getElementsByClassName("item2")[0];
 	if(buildingMenu.style.width < "100px"){
-		buildingMenu.style.height = "75%";
-    	buildingMenu.style.width = "83%";
+		buildingMenu.style.height = "73%";
+    	buildingMenu.style.width = "80%";
 		buildingMenu.style.padding = "15px 15px 15px 15px";
     	upgradeMenu.style.height = "0px";
     	upgradeMenu.style.width = "0px";
@@ -560,8 +594,8 @@ function showAllUpgrades(){
 	var buildingMenu = document.getElementsByClassName("item1")[0];
 	var upgradeMenu = document.getElementsByClassName("item2")[0];
 	if(upgradeMenu.style.width < "100px"){
-		upgradeMenu.style.height = "75%";
-    	upgradeMenu.style.width = "83%";
+		upgradeMenu.style.height = "73%";
+    	upgradeMenu.style.width = "80%";
 		upgradeMenu.style.padding = "15px 15px 15px 15px";
     	buildingMenu.style.height = "0px";
     	buildingMenu.style.width = "0px";
@@ -570,6 +604,15 @@ function showAllUpgrades(){
     	upgradeMenu.style.height = "0px";
     	upgradeMenu.style.width = "0px";
 		upgradeMenu.style.padding = "0px 0px 0px 0px";
+    }
+}
+
+function NewUpgrade(){
+	var newUpgrade = document.getElementById("newUpgrade");
+	if(newUpgrade.style.width < "100px"){
+		newUpgrade.style.width = "210px";
+    } else {
+		newUpgrade.style.width = "0px";
     }
 }
 
@@ -589,8 +632,8 @@ function uploadLeave(){
 }
 
 //saving
-
 function Save(){
+	musicProgress = music.currentTime;
     document.getElementById('saved').innerHTML = "saved";
 	setTimeout("document.getElementById('saved').innerHTML = '';", 800)
 	var save = {
@@ -614,7 +657,12 @@ function Save(){
 		'h': h,
 		'totalDamage': totalDamage,
 		'audioMuted': audioMuted,
-		'musicMuted': musicMuted
+		'musicMuted': musicMuted,
+		'musicProgress': musicProgress,
+		'nutBoyUpgradeShown': nutBoyUpgradeShown,
+		'clickUpgradeShown': clickUpgradeShown,
+		'click2UpgradeShown': click2UpgradeShown,
+		'allUpgradeShown': allUpgradeShown
 	}
 	localStorage.setItem("save",JSON.stringify(save));
 }
@@ -657,6 +705,11 @@ function Load(){
 	if (typeof savegame.totalDamage !== "undefined") totalDamage = savegame.totalDamage;
 	if (typeof savegame.audioMuted !== "undefined") audioMuted = savegame.audioMuted;
 	if (typeof savegame.musicMuted !== "undefined") musicMuted = savegame.musicMuted;
+	if (typeof savegame.musicProgress !== "undefined") musicProgress = savegame.musicProgress;
+	if (typeof savegame.nutBoyUpgradeShown !== "undefined") nutBoyUpgradeShown = savegame.nutBoyUpgradeShown;
+	if (typeof savegame.clickUpgradeShown !== "undefined") clickUpgradeShown = savegame.clickUpgradeShown;
+	if (typeof savegame.click2UpgradeShown !== "undefined") click2UpgradeShown = savegame.click2UpgradeShown;
+	if (typeof savegame.allUpgradeShown !== "undefined") allUpgradeShown = savegame.allUpgradeShown;
     document.getElementById('time').innerHTML = "played for " + h + ":" + m + ":" + s;
 	UpdateValues();
 	UpdateCosts();
@@ -782,17 +835,41 @@ function CheckAmounts(){
 			var leftpanel = document.getElementsByClassName("item2")[0];
 			leftpanel.style.padding = "20px 25px 20px 25px";
 		}
+		
+		if(page == "mobile.html" && nutBoyUpgradeShown == false){
+			NewUpgrade();
+			nutBoyUpgradeShown = true;
+			setTimeout(function (){
+				NewUpgrade();
+			}, 2000);
+		}
     }
 	if(nuts >= 300 || clickUpgrades >= 1) {
 		var classes = document.getElementsByClassName('buyClick');
 		for (var i=0;i<classes.length;i++) {
 			classes[i].style.display = '';
 		}
+		
+		if(page == "mobile.html" && clickUpgradeShown == false){
+			NewUpgrade();
+			clickUpgradeShown = true;
+			setTimeout(function (){
+				NewUpgrade();
+			}, 2000);
+		}
     }
 	if(nuts >= 5000 || clickUpgrades2 >= 1) {
 		var classes = document.getElementsByClassName('buyClick2');
 		for (var i=0;i<classes.length;i++) {
 			classes[i].style.display = '';
+		}
+		
+		if(page == "mobile.html" && click2UpgradeShown == false){
+			NewUpgrade();
+			click2UpgradeShown = true;
+			setTimeout(function (){
+				NewUpgrade();
+			}, 2000);
 		}
     }
 	if(nuts >= 1000 || nutMen >= 1) {
@@ -811,6 +888,14 @@ function CheckAmounts(){
 		var classes = document.getElementsByClassName('buyAllUpgrade');
 		for (var i=0;i<classes.length;i++) {
 			classes[i].style.display = '';
+		}
+		
+		if(page == "mobile.html" && allUpgradeShown == false){
+			NewUpgrade();
+			allUpgradeShown = true;
+			setTimeout(function (){
+				NewUpgrade();
+			}, 2000);
 		}
     }
 	if(nuts >= 150000 || nutFactories >= 1) {
@@ -852,8 +937,8 @@ function CheckAmounts(){
 }
 
 function UpdateValues(){
-	var clickUpgradesTemp = 50 * clickUpgrades;
-	var clickUpgrades2Temp = 200 * clickUpgrades2;
+	var clickUpgradesTemp = 15 * clickUpgrades;
+	var clickUpgrades2Temp = 50 * clickUpgrades2;
 	clickDamage = 1 + clickUpgradesTemp + clickUpgrades2Temp;
 	document.getElementById('nuts').innerHTML = kFormatter(round(nuts));
 	document.getElementById('nutKids').innerHTML = nutKids;
@@ -889,9 +974,9 @@ function UpdateValues(){
 function UpdateCosts(){
 	nutKidCostNext = Math.floor(15 * Math.pow(1.1,nutKids));
 	nutBoyCostNext = Math.floor(50 * Math.pow(1.1,nutBoys));
-	nutBoyBonusCostNext = Math.floor(100 * Math.pow(3,nutBoyBonuses));
+	nutBoyBonusCostNext = Math.floor(100 * Math.pow(5,nutBoyBonuses));
 	clickUpgradeCostNext = Math.floor(300 * Math.pow(3,clickUpgrades));
-	clickUpgrade2CostNext = Math.floor(5000 * Math.pow(3,clickUpgrades2));
+	clickUpgrade2CostNext = Math.floor(5000 * Math.pow(5,clickUpgrades2));
 	nutManCostNext = Math.floor(1000 * Math.pow(1.1,nutMen));
 	nutFarmCostNext = Math.floor(13000 * Math.pow(1.1,nutFarms));
 	allUpgradeCostNext = Math.floor(100000 * Math.pow(1.1,allUpgrades));
@@ -963,13 +1048,13 @@ window.addEventListener('resize', function(){
 CheckMobile();
 
 //disable pointer cursor on hidden menu buttons
-if(page != "mobile.html"){
 	document.getElementById('menuButton').style.cursor = "default";
 	document.getElementById('menuButton2').style.cursor = "default";
 	document.getElementById('menuButton3').style.cursor = "default";
-}
 
 Load();
+
+music.currentTime = musicProgress;
 
 //check if enough nuts to unlock things
 CheckAmounts();	
