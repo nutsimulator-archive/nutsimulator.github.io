@@ -610,7 +610,7 @@ function showAllUpgrades(){
 function NewUpgrade(){
 	var newUpgrade = document.getElementById("newUpgrade");
 	if(newUpgrade.style.width < "100px"){
-		newUpgrade.style.width = "210px";
+		newUpgrade.style.width = "42%";
     } else {
 		newUpgrade.style.width = "0px";
     }
@@ -635,7 +635,7 @@ function uploadLeave(){
 function Save(){
 	musicProgress = music.currentTime;
     document.getElementById('saved').innerHTML = "saved";
-	setTimeout("document.getElementById('saved').innerHTML = '';", 800)
+	setTimeout("document.getElementById('saved').innerHTML = ''", 800)
 	var save = {
 		'nuts': nuts,
 		'nutKids': nutKids,
