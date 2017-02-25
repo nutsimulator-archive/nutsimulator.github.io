@@ -749,12 +749,15 @@ function CheckAmounts(){
 		for (var i=0;i<classes.length;i++) {
 			classes[i].style.display = '';
 		}
-		if(document.getElementById('things').style.display != "null"){
+		
+		if(page != "mobile.html"){
 			document.getElementById('things').style.display = "";
 		}
 		
-		var leftpanel = document.getElementsByClassName("item1")[0];
-		leftpanel.style.padding = "20px 25px 20px 25px";
+		if(page != "mobile.html"){
+			var leftpanel = document.getElementsByClassName("item1")[0];
+			leftpanel.style.padding = "20px 25px 20px 25px";
+		}
 	}
 	
 	if(nuts >= 50 || nutBoys >= 1) {
@@ -768,13 +771,17 @@ function CheckAmounts(){
 		for (var i=0;i<classes.length;i++) {
 			classes[i].style.display = '';
 		}
-		document.getElementById('upgrades').style.display = "";
-		document.getElementById('damage').style.display = "";
-		document.getElementById('clickBonusText').style.display = "";
-		document.getElementById('line2').style.display = "";
+		if(page != "mobile.html"){
+			document.getElementById('upgrades').style.display = "";
+			document.getElementById('damage').style.display = "";
+			document.getElementById('clickBonusText').style.display = "";
+			document.getElementById('line2').style.display = "";
+		}
 		
-		var leftpanel = document.getElementsByClassName("item2")[0];
-		leftpanel.style.padding = "20px 25px 20px 25px";
+		if(page != "mobile.html"){
+			var leftpanel = document.getElementsByClassName("item2")[0];
+			leftpanel.style.padding = "20px 25px 20px 25px";
+		}
     }
 	if(nuts >= 300 || clickUpgrades >= 1) {
 		var classes = document.getElementsByClassName('buyClick');
@@ -914,6 +921,16 @@ function UpdateDamage(){
 	totalDamage = round(nutKidDamage * nutKids + nutBoyDamage * nutBoys + nutManDamage * nutMen + nutFarmDamage * nutFarms + nutFactoryDamage * nutFactories + nutBankDamage * nutBanks + nutEmpireDamage * nutEmpires + nutWorldControlDamage * nutWorldControls + nutGalacticReignDamage * nutGalacticReigns + deezNutGuyDamage * deezNutGuys);
 }
 
+function CheckMobile(){
+	if(window.innerHeight > window.innerWidth && page == "index.html"){
+		window.location.href = "mobile.html";
+	} else if (window.innerHeight < window.innerWidth && page == "mobile.html"){
+		window.location.href = "index.html";
+	} else if (window.innerHeight > window.innerWidth && page == ""){
+		window.location.href = "mobile.html";
+	}
+}
+
 document.body.onkeydown = function(e){
     if(e.keyCode == 32){
         event.preventDefault();
@@ -940,15 +957,10 @@ window.onbeforeunload = function(){
 }
 
 window.addEventListener('resize', function(){
-	Save();
-	if(window.innerHeight > window.innerWidth && page == "index.html"){
-		window.location.href = "mobile.html";
-	} else if (window.innerHeight < window.innerWidth && page == "mobile.html"){
-		window.location.href = "index.html";
-	} else if (window.innerHeight > window.innerWidth && page == ""){
-		window.location.href = "mobile.html";
-	}
+	CheckMobile();
 });
+
+CheckMobile();
 
 //disable pointer cursor on hidden menu buttons
 if(page != "mobile.html"){
