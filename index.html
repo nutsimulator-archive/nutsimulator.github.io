@@ -19,11 +19,9 @@
 				</div>
 				<input type="file" name="file" id="customImage" style="position:absolute;right:20%;bottom:4%"/>
 				<label for="customImage" onmouseover="uploadHover()" onmouseleave="uploadLeave()" id="uploadLabel"><img src="images/upload.png" id="uploadIcon" style="transition: 0.5s;width:30px;height:30px;left:-2px;padding-right:10px;position:relative;top:2px"><span style="position:relative;top:4%">choose a custom nut image</span></label>
-				<button onclick="toggleMusic()" style="position:absolute;bottom:17%;background-color:#7c7c7c;color:white">Toggle Music</button>
-				<button onclick="toggleAudio()" style="position:absolute;bottom:11%;background-color:#606060;color:white">Toggle Audio</button>
 				<div class="textContainer">
 					<div class="item1">
-						<div id="things" style="font-size:2vw;font-weight:bold;position: relative;bottom: 8px;display:none">things</div>
+						<div id="things" style="font-size:2.5vw;font-weight:bold;position: relative;bottom: 8px;display:none">things</div>
 						<div class="buyNutKid" style="display:none">Nut Kids: <span id="nutKids">0</span></div>
 						
 						<div class="buyNutBoy" style="display:none">Nut Boys: <span id="nutBoys">0</span></div>
@@ -55,7 +53,7 @@
 					</div>
 					
 					<div class="item2">
-						<div id="upgrades" style="font-size:3vw;font-weight:bold;position: relative;bottom: 8px;display:none">upgrades</div>
+						<div id="upgrades" style="font-size:2.5vw;font-weight:bold;position: relative;bottom: 8px;display:none">upgrades</div>
 						<span id="damage" style="display:none">total nuts/sec: <span id="totalDamage">0</span></span>
 						<br>
 						<span id="clickBonusText" style="display:none">nuts/click: <span id="clickDamage">1</span></span>
@@ -96,6 +94,10 @@
 				</div>
 				
 				<div id="bottomLeft">
+					<button onclick="toggleMusic()" style="background-color:#7c7c7c;color:white">Toggle Music</button>
+					<br>
+					<button onclick="toggleAudio()" style="background-color:#606060;color:white">Toggle Audio</button>
+					<br>
 					<button onclick="showMenu()" class="button">show menu</button>
 					<span id="menu">
 						<button onclick="Save()" class="button" id="menuButton">save</button>

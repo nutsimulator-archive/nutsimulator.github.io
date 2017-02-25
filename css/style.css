@@ -46,9 +46,9 @@ main {
 }
 
 #bottomLeft {
-	line-height: 3;
+	line-height: 2;
 	position: absolute;
-	top: 90%;
+	bottom: 4%;
 }
 
 #bottomRight {
@@ -112,7 +112,7 @@ main {
     position: absolute;
     margin: auto;
     top: 0.9vw;
-    left: 22vw;
+    left: 17vw;
     right: 0;
 	bottom: 2vw;
 	font-size: 2vw;
@@ -135,9 +135,9 @@ main {
 #menu {
 	opacity: 0;
 	position: absolute;
-	left:130px;
-	top:-4px;
-	width:800px;
+	left: 130px;
+	top: 78px;
+	width: 800px;
     transition: 0.5s;
 }
 
@@ -167,6 +167,7 @@ main {
 	overflow: hidden;
 	text-overflow: clip;
 	transition: 0.5s;
+	z-index:1;
 }
 
 #customImage:focus + label,
@@ -217,29 +218,6 @@ main {
 	transform: translateY(2px);
 }
 
-.button {
-	padding: 0.5vw 1vw;
-	font-size: 0.9vw;
-	text-align: center;
-	cursor: pointer;
-	outline: none;
-	color: #fff;
-	background-color: #444444;
-	border: none;
-	border-radius: 0.75vw;
-	box-shadow: 0 6px #999;
-}
-
-.button:hover {
-	background-color: #383838;
-}
-
-.button:active {
-	background-color: #333333;
-	box-shadow: 0 3px #666;
-	transform: translateY(2px);
-}
-
 #button {
 	background-color: #EB9532;
 }
@@ -255,6 +233,7 @@ button {
 	border: none;
 	border-radius: 0.75vw;
 	box-shadow: 0 6px #999;
+	background-color: #444444;
 }
 
 button:hover {
@@ -296,13 +275,13 @@ button:active {
 	}
 	100% { 
 		opacity: 1;
-		-webkit-transform: scale(0.8) translate(-40px, 0px);
+		-webkit-transform: scale(0.8) translate(-1.5vw, 0px);
 	}
 }
 
 @-webkit-keyframes grow2 {
 	0% {
-		-webkit-transform: scale(0.8) translate(-40px, 0px);
+		-webkit-transform: scale(0.8) translate(-1.5vw, 0px);
         opacity: 1;
 	}
 	100% { 
@@ -316,12 +295,12 @@ button:active {
 		-webkit-transform: scale(1.0) translate(0px, 0px);
 	}
 	100% { 
-		-webkit-transform: scale(0.95) translate(0px, 5px);
+		-webkit-transform: scale(0.95) translate(0px, 0.3vw);
 	}
 }
 
 @-webkit-keyframes grow3 {
-	0% {-webkit-transform: scale(0.95) translate(0px, 5px);}100% {-webkit-transform: scale(1.0) translate(0px, 0px);}
+	0% {-webkit-transform: scale(0.95) translate(0px, 0.3vw);}100% {-webkit-transform: scale(1.0) translate(0px, 0px);}
 }
 
 @-webkit-keyframes zoomIn {
@@ -357,7 +336,7 @@ button:active {
 		opacity: 1;
 	}
 	100% {
-		-webkit-transform: scale(1) translateY(-30px);
+		-webkit-transform: scale(1) translateY(-2vw);
 		opacity: 0;
 	}
 }

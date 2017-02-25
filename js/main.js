@@ -106,9 +106,6 @@ function toggleMusic(){
 	}
 }
 
-//var x = "Total Width: " + screen.width;
-//document.getElementById('width').innerHTML = x;
-
 function kFormatter(num) {
     if(num > 999 && num < 999999){
 		num = num/1000;
@@ -365,7 +362,7 @@ function buy(building){
 		break;
 		
 		case "allUpgrade":
-			var allUpgradeCost = Math.floor(100000 * Math.pow(1.1,allUpgrades));
+			var allUpgradeCost = Math.floor(100000 * Math.pow(5,allUpgrades));
 			if(nuts >= allUpgradeCost){
 				allUpgrades = allUpgrades + 1;
 				nuts = nuts - allUpgradeCost;
@@ -793,6 +790,12 @@ function GreyOutButtons(){
 	} else if (nuts >= clickUpgrade2CostNext){
 		document.getElementsByClassName('buyClick2')[1].style.webkitFilter = "";
 	}
+	
+	if(nuts < allUpgradeCostNext){
+		document.getElementsByClassName('buyAllUpgrade')[1].style.webkitFilter = "brightness(70%)";
+	} else if (nuts >= allUpgradeCostNext){
+		document.getElementsByClassName('buyAllUpgrade')[1].style.webkitFilter = "";
+	}
 }
 
 function CheckAmounts(){	
@@ -979,7 +982,7 @@ function UpdateCosts(){
 	clickUpgrade2CostNext = Math.floor(5000 * Math.pow(5,clickUpgrades2));
 	nutManCostNext = Math.floor(1000 * Math.pow(1.1,nutMen));
 	nutFarmCostNext = Math.floor(13000 * Math.pow(1.1,nutFarms));
-	allUpgradeCostNext = Math.floor(100000 * Math.pow(1.1,allUpgrades));
+	allUpgradeCostNext = Math.floor(100000 * Math.pow(5,allUpgrades));
 	nutFactoryCostNext = Math.floor(150000 * Math.pow(1.1,nutFactories));
 	nutBankCostNext = Math.floor(1500000 * Math.pow(1.1,nutBanks));
 	nutEmpireCostNext = Math.floor(20000000 * Math.pow(1.1,nutEmpires));
