@@ -206,7 +206,6 @@ window.setInterval(function(){
 	document.title = kFormatter(nuts) + " nuts";
 	
 	var addedNuts = document.getElementById("addedNuts");
-	document.getElementById('addedNuts').innerHTML = "+ " + kFormatter(totalDamage);
 	if(totalDamage >= 1){
 		window.setTimeout(function ()
 		{
@@ -252,7 +251,6 @@ function buy(building){
 				nuts = nuts - nutKidCost;
 				UpdateValues();
 				UpdateDamage();
-				document.getElementById('totalDamage').innerHTML = totalDamage;
 				UpdateCosts();
 				stopAudio(buyAudio);
 				buyAudio.play();
@@ -269,7 +267,6 @@ function buy(building){
 				nuts = nuts - nutBoyCost;
 				UpdateValues();
 				UpdateDamage();
-				document.getElementById('totalDamage').innerHTML = totalDamage;
 				UpdateCosts();
 				stopAudio(buyAudio);
 				buyAudio.play();
@@ -287,7 +284,6 @@ function buy(building){
 				UpdateValues();
 				nutBoyDamage = nutBoyDamage * 2;
 				UpdateDamage();
-				document.getElementById('totalDamage').innerHTML = totalDamage;
 				UpdateCosts();
 				stopAudio(buyAudio);
 				buyAudio.play();
@@ -334,7 +330,6 @@ function buy(building){
 				nuts = nuts - nutManCost;
 				UpdateValues();
 				UpdateDamage();
-				document.getElementById('totalDamage').innerHTML = totalDamage;
 				UpdateCosts();
 				stopAudio(buyAudio);
 				buyAudio.play();
@@ -351,7 +346,6 @@ function buy(building){
 				nuts = nuts - nutFarmCost;
 				UpdateValues();
 				UpdateDamage();
-				document.getElementById('totalDamage').innerHTML = totalDamage;
 				UpdateCosts();
 				stopAudio(buyAudio);
 				buyAudio.play();
@@ -378,7 +372,6 @@ function buy(building){
 				deezNutGuyDamage = deezNutGuyDamage * 2;
 				UpdateValues();
 				UpdateDamage();
-				document.getElementById('totalDamage').innerHTML = totalDamage;
 				UpdateCosts();
 				stopAudio(buyAudio);
 				buyAudio.play();
@@ -395,7 +388,6 @@ function buy(building){
 				nuts = nuts - nutFactoryCost;
 				UpdateValues();
 				UpdateDamage();
-				document.getElementById('totalDamage').innerHTML = totalDamage;
 				UpdateCosts();
 				stopAudio(buyAudio);
 				buyAudio.play();
@@ -412,7 +404,6 @@ function buy(building){
 				nuts = nuts - nutBankCost;
 				UpdateValues();
 				UpdateDamage();
-				document.getElementById('totalDamage').innerHTML = totalDamage;
 				UpdateCosts();
 				stopAudio(buyAudio);
 				buyAudio.play();
@@ -429,7 +420,6 @@ function buy(building){
 				nuts = nuts - nutEmpireCost;
 				UpdateValues();
 				UpdateDamage();
-				document.getElementById('totalDamage').innerHTML = totalDamage;
 				UpdateCosts();
 				stopAudio(buyAudio);
 				buyAudio.play();
@@ -446,7 +436,6 @@ function buy(building){
 				nuts = nuts - nutWorldControlCost;
 				UpdateValues();
 				UpdateDamage();
-				document.getElementById('totalDamage').innerHTML = totalDamage;
 				UpdateCosts();
 				stopAudio(buyAudio);
 				buyAudio.play();
@@ -463,7 +452,6 @@ function buy(building){
 				nuts = nuts - nutGalacticReignCost;
 				UpdateValues();
 				UpdateDamage();
-				document.getElementById('totalDamage').innerHTML = totalDamage;
 				UpdateCosts();
 				stopAudio(buyAudio);
 				buyAudio.play();
@@ -480,7 +468,6 @@ function buy(building){
 				nuts = nuts - deezNutGuyCost;
 				UpdateValues();
 				UpdateDamage();
-				document.getElementById('totalDamage').innerHTML = totalDamage;
 				UpdateCosts();
 				stopAudio(buyAudio);
 				buyAudio.play();
@@ -491,7 +478,6 @@ function buy(building){
 		break;
 	}
 	GreyOutButtons();
-	document.getElementById("damageAdded").innerHTML = "+ " + kFormatter(totalDamage) + "/sec";
 	Save();
 	if(page != "mobile.html"){
 		document.getElementById('upgrades').style.display = "";
@@ -513,11 +499,10 @@ window.setInterval(function(){
 function showMenu() {
 	var menu = document.getElementById('menu');
 	if(page != "mobile.html"){
-		console.log(menu.style.left);
-		if(menu.style.left < "150px"){
+		if(menu.style.opacity < "1"){
+			menu.style.pointerEvents = "auto";
 			menu.style.opacity = "1";
-			menu.style.height = "75%";
-			menu.style.left = "150px";
+			menu.style.left = "8vw";
 			document.getElementById('menuButton').style.cursor = "pointer";
 			document.getElementById('menuButton2').style.cursor = "pointer";
 			document.getElementById('menuButton3').style.cursor = "pointer";
@@ -525,9 +510,9 @@ function showMenu() {
 			document.getElementById('menuButton2').disabled = false;
 			document.getElementById('menuButton3').disabled = false;
 		} else {
-			menu.style.height = "0px";
-			menu.style.left = "130px";
+			menu.style.left = "6.5vw";
 			menu.style.opacity = "0";
+			menu.style.pointerEvents = "none";
 			document.getElementById('menuButton').style.cursor = "default";
 			document.getElementById('menuButton2').style.cursor = "default";
 			document.getElementById('menuButton3').style.cursor = "default";
@@ -536,11 +521,10 @@ function showMenu() {
 			document.getElementById('menuButton3').disabled = true;
 		}
 	} else {
-		console.log(menu.style.left);
-		if(menu.style.left > "100px"){
+		if(menu.style.opacity < "1"){
 			menu.style.opacity = "1";
 			menu.style.height = "30px";
-			menu.style.left = "100px";
+			menu.style.left = "25vw";
 			document.getElementById('menuButton').style.cursor = "pointer";
 			document.getElementById('menuButton2').style.cursor = "pointer";
 			document.getElementById('menuButton3').style.cursor = "pointer";
@@ -550,7 +534,7 @@ function showMenu() {
 		} else {
 			menu.style.opacity = "0";
 			menu.style.height = "0px";
-			menu.style.left = "85px";
+			menu.style.left = "17vw";
 			document.getElementById('menuButton').style.cursor = "default";
 			document.getElementById('menuButton2').style.cursor = "default";
 			document.getElementById('menuButton3').style.cursor = "default";
@@ -577,13 +561,22 @@ function showAllBuildings(){
 		buildingMenu.style.height = "73%";
     	buildingMenu.style.width = "80%";
 		buildingMenu.style.padding = "15px 15px 15px 15px";
+		
+		//close other menu if open
     	upgradeMenu.style.height = "0px";
     	upgradeMenu.style.width = "0px";
 		upgradeMenu.style.padding = "0px 0px 0px 0px";
+		
+		//show scroll after animation done
+		setTimeout(function (){
+			buildingMenu.style.overflow = "auto";
+		}, 500);
     } else {
     	buildingMenu.style.height = "0px";
     	buildingMenu.style.width = "0px";
 		buildingMenu.style.padding = "0px 0px 0px 0px";
+		
+		buildingMenu.style.overflow = "hidden";
     }
 }
 
@@ -594,13 +587,23 @@ function showAllUpgrades(){
 		upgradeMenu.style.height = "73%";
     	upgradeMenu.style.width = "80%";
 		upgradeMenu.style.padding = "15px 15px 15px 15px";
+		
+		//close other menu if open
     	buildingMenu.style.height = "0px";
     	buildingMenu.style.width = "0px";
 		buildingMenu.style.padding = "0px 0px 0px 0px";
+		
+		//show scroll after animation done
+		setTimeout(function (){
+			buildingMenu.style.overflow = "auto";
+		}, 500);
+		
     } else {
     	upgradeMenu.style.height = "0px";
     	upgradeMenu.style.width = "0px";
 		upgradeMenu.style.padding = "0px 0px 0px 0px";
+		
+		buildingMenu.style.overflow = "hidden";
     }
 }
 
@@ -959,9 +962,9 @@ function UpdateValues(){
 	document.getElementById('nutEmpires').innerHTML = nutEmpires;
 	document.getElementById('nutGalacticReigns').innerHTML = nutGalacticReigns;
 	document.getElementById('deezNutGuys').innerHTML = deezNutGuys;
-	document.getElementById('addedNuts').innerHTML = totalDamage;
+	document.getElementById('addedNuts').innerHTML = "+ " + kFormatter(totalDamage);
 	document.getElementById('totalDamage').innerHTML = kFormatter(totalDamage);
-	document.getElementById("damageAdded").innerHTML = "+ "+totalDamage+"/sec";
+	document.getElementById("damageAdded").innerHTML = "+ " + kFormatter(totalDamage) + "/sec";
 	
 	document.getElementById('nutKidDamage').innerHTML = kFormatter(nutKidDamage);
 	document.getElementById('nutManDamage').innerHTML = kFormatter(nutManDamage);
