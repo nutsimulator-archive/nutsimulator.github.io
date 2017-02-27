@@ -309,20 +309,22 @@ function buy(building){
 
 		case "buyNutBoyBonus":
 			var nutBoyBonusCost = Math.floor(100 * Math.pow(5,nutBoyBonuses));
-			if(nuts >= nutBoyBonusCost){
-				nutBoyBonuses = nutBoyBonuses + 1;
-				nuts = nuts - nutBoyBonusCost;
-				UpdateValues();
-				nutBoyDamage = nutBoyDamage * 2 + prestigeGain;
-				UpdateDamage();
-				UpdateCosts();
-				stopAudio(buyAudio);
-				buyAudio.play();
-				xp += 0.5;
-				UpdateLevel();
-			} else {
-				stopAudio(cantBuyAudio);
-				cantBuyAudio.play();
+			if(nutBoyBonuses < 5){
+				if(nuts >= nutBoyBonusCost){
+					nutBoyBonuses = nutBoyBonuses + 1;
+					nuts = nuts - nutBoyBonusCost;
+					UpdateValues();
+					nutBoyDamage = nutBoyDamage * 2 + prestigeGain;
+					UpdateDamage();
+					UpdateCosts();
+					stopAudio(buyAudio);
+					buyAudio.play();
+					xp += 0.5;
+					UpdateLevel();
+				} else {
+					stopAudio(cantBuyAudio);
+					cantBuyAudio.play();
+				}
 			}
 		break;
 
@@ -398,29 +400,31 @@ function buy(building){
 
 		case "allUpgrade":
 			var allUpgradeCost = Math.floor(100000 * Math.pow(5,allUpgrades));
-			if(nuts >= allUpgradeCost){
-				allUpgrades = allUpgrades + 1;
-				nuts = nuts - allUpgradeCost;
-				nutKidDamage = nutKidDamage * 2 + prestigeGain;
-				nutBoyDamage = nutBoyDamage * 2 + prestigeGain;
-				nutManDamage = nutManDamage * 2 + prestigeGain;
-				nutFarmDamage = nutFarmDamage * 2 + prestigeGain;
-				nutFactoryDamage = nutFactoryDamage * 2 + prestigeGain;
-				nutBankDamage = nutBankDamage * 2 + prestigeGain;
-				nutEmpireDamage = nutEmpireDamage * 2 + prestigeGain;
-				nutWorldControlDamage = nutWorldControlDamage * 2 + prestigeGain;
-				nutGalacticReignDamage = nutGalacticReignDamage * 2 + prestigeGain;
-				deezNutGuyDamage = deezNutGuyDamage * 2 + prestigeGain;
-				UpdateValues();
-				UpdateDamage();
-				UpdateCosts();
-				stopAudio(buyAudio);
-				buyAudio.play();
-				xp += 0.5;
-				UpdateLevel();
-			} else {
-				stopAudio(cantBuyAudio);
-				cantBuyAudio.play();
+			if(allUpgrades < 5){
+				if(nuts >= allUpgradeCost){
+					allUpgrades = allUpgrades + 1;
+					nuts = nuts - allUpgradeCost;
+					nutKidDamage = nutKidDamage * 2 + prestigeGain;
+					nutBoyDamage = nutBoyDamage * 2 + prestigeGain;
+					nutManDamage = nutManDamage * 2 + prestigeGain;
+					nutFarmDamage = nutFarmDamage * 2 + prestigeGain;
+					nutFactoryDamage = nutFactoryDamage * 2 + prestigeGain;
+					nutBankDamage = nutBankDamage * 2 + prestigeGain;
+					nutEmpireDamage = nutEmpireDamage * 2 + prestigeGain;
+					nutWorldControlDamage = nutWorldControlDamage * 2 + prestigeGain;
+					nutGalacticReignDamage = nutGalacticReignDamage * 2 + prestigeGain;
+					deezNutGuyDamage = deezNutGuyDamage * 2 + prestigeGain;
+					UpdateValues();
+					UpdateDamage();
+					UpdateCosts();
+					stopAudio(buyAudio);
+					buyAudio.play();
+					xp += 0.5;
+					UpdateLevel();
+				} else {
+					stopAudio(cantBuyAudio);
+					cantBuyAudio.play();
+				}
 			}
 		break;
 
@@ -787,7 +791,7 @@ function ShowLevel(){
 	var upgradeMenu = document.getElementsByClassName("item2")[0];
 	document.getElementById("prestigeLevel").innerHTML = level;
 	document.getElementById("prestigeDamage").innerHTML = totalDamage;
-	document.getElementById("prestigeGain").innerHTML = round(level * totalDamage/10000000);
+	document.getElementById("prestigeGain").innerHTML = round((level + nutKids * nutKidCostNext + nutMen * nutManCostNext + nutFarms * nutFarmCostNext + nutFactories * nutFactoryCostNext + nutBanks * nutBankCostNext + nutEmpires * nutEmpireCostNext + nutWorldControls * nutWorldControlCostNext+ nutGalacticReigns * nutGalacticReignCostNext + deezNutGuys * deezNutGuyCostNext + nutBoyBonuses * nutBoyBonusCostNext + clickUpgrades * clickUpgradeCostNext + clickUpgrades2 * clickUpgrade2CostNext + allUpgrades * allUpgradeCostNext)/1000000000000);
 
 	if(page == "mobile.html"){
 		if(levelDiv.style.width < "100px"){
@@ -889,7 +893,7 @@ function ShowPrestige(){
 	var upgradeMenu = document.getElementsByClassName("item2")[0];
 	document.getElementById("prestigeLevel").innerHTML = level;
 	document.getElementById("prestigeDamage").innerHTML = totalDamage;
-	document.getElementById("prestigeGain").innerHTML = round(level * totalDamage/10000000);
+	document.getElementById("prestigeGain").innerHTML = round((level + nutKids * nutKidCostNext + nutMen * nutManCostNext + nutFarms * nutFarmCostNext + nutFactories * nutFactoryCostNext + nutBanks * nutBankCostNext + nutEmpires * nutEmpireCostNext + nutWorldControls * nutWorldControlCostNext+ nutGalacticReigns * nutGalacticReignCostNext + deezNutGuys * deezNutGuyCostNext + nutBoyBonuses * nutBoyBonusCostNext + clickUpgrades * clickUpgradeCostNext + clickUpgrades2 * clickUpgrade2CostNext + allUpgrades * allUpgradeCostNext)/1000000000000);
 
 	if(page != "mobile.html"){
 			stopAudio(menuAudio);
@@ -948,11 +952,11 @@ function ShowPrestige(){
 }
 
 function Prestige(){
-	var tempGain = level * totalDamage/10000000;
+	var tempGain = round((level + nutKids * nutKidCostNext + nutMen * nutManCostNext + nutFarms * nutFarmCostNext + nutFactories * nutFactoryCostNext + nutBanks * nutBankCostNext + nutEmpires * nutEmpireCostNext + nutWorldControls * nutWorldControlCostNext+ nutGalacticReigns * nutGalacticReignCostNext + deezNutGuys * deezNutGuyCostNext + nutBoyBonuses * nutBoyBonusCostNext + clickUpgrades * clickUpgradeCostNext + clickUpgrades2 * clickUpgrade2CostNext + allUpgrades * allUpgradeCostNext)/1000000000000);
 	if(tempGain >= 0.01){
-		if (confirm("are you sure you want to delete all progress and prestige with a " +  round(prestigeGain + level * totalDamage/10000000) + " nut bonus?")) {
+		if (confirm("are you sure you want to delete all progress and prestige with a " +  round(prestigeGain + tempGain) + " nut bonus?")) {
 			deleted = true;
-			prestigeGain = prestigeGain + round((level * totalDamage)/10000000);
+			prestigeGain = prestigeGain + round((level + nutKids * nutKidCostNext + nutMen * nutManCostNext + nutFarms * nutFarmCostNext + nutFactories * nutFactoryCostNext + nutBanks * nutBankCostNext + nutEmpires * nutEmpireCostNext + nutWorldControls * nutWorldControlCostNext+ nutGalacticReigns * nutGalacticReignCostNext + deezNutGuys * deezNutGuyCostNext + nutBoyBonuses * nutBoyBonusCostNext + clickUpgrades * clickUpgradeCostNext + clickUpgrades2 * clickUpgrade2CostNext + allUpgrades * allUpgradeCostNext)/1000000000000);
 			Save();
 			if (confirm('are you sure you want to delete all progress')) {
 				deleted = true;
@@ -1173,6 +1177,16 @@ function GreyOutButtons(){
 		document.getElementsByClassName('buyAllUpgrade')[1].style.webkitFilter = "brightness(70%)";
 	} else if (nuts >= allUpgradeCostNext){
 		document.getElementsByClassName('buyAllUpgrade')[1].style.webkitFilter = "";
+	}
+	
+	if(nutBoyBonuses >= 5){
+		document.getElementsByClassName('buyNutBoyBonus')[1].style.webkitFilter = "brightness(60%)";
+		document.getElementById('nutBoyBonusCost').innerHTML = "<b>sold out</b>";
+	}
+	
+	if(allUpgrades >= 5){
+		document.getElementsByClassName('buyAllUpgrade')[1].style.webkitFilter = "brightness(60%)";
+		document.getElementById('allUpgradeCost').innerHTML = "sold out";
 	}
 }
 
