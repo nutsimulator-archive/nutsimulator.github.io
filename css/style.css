@@ -20,26 +20,6 @@ body {
 	padding: 20px 25px 20px 25px;
 }
 
-#gambling {
-	line-height: 1.8;
-    box-shadow: 2px 2px 5px #888888;
-	font-family: 'Roboto', sans-serif;
-	font-size: 1.1vw;
-	top: 4.5vw;
-	left: 20vw;
-	padding: 0px 0px 0px 0px;
-	
-	height: 0px;
-	width: 0px;
-	
-	z-index: 999;
-	position: absolute;
-	background-color: rgba(255,255,255,0.95);
-	white-space: nowrap;
-	overflow: hidden;
-	transition: 0.5s;
-}
-
 main {
     -webkit-animation: fadein 2s cubic-bezier(0.215, 0.61, 0.355, 1);
 	-webkit-touch-callout: none;
@@ -196,6 +176,26 @@ main {
     background-color: #e23131;
 }
 
+#gambling {
+	line-height: 1.8;
+    box-shadow: 2px 2px 5px #888888;
+	font-family: 'Roboto', sans-serif;
+	font-size: 1.1vw;
+	top: 4.5vw;
+	left: 20vw;
+	padding: 0px 0px 0px 0px;
+	
+	height: 0px;
+	width: 0px;
+	
+	z-index: 999;
+	position: absolute;
+	background-color: rgba(255,255,255,0.95);
+	white-space: nowrap;
+	overflow: hidden;
+	transition: 0.5s;
+}
+
 .item1 {
 	float: left;
 	text-align: left;
@@ -232,6 +232,7 @@ button {
 	border-radius: 0.75vw;
 	box-shadow: 0 6px #999;
 	background-color: #444444;
+	transition: 0.5s;
 }
 
 button:hover {

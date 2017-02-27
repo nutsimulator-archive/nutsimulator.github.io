@@ -489,7 +489,7 @@ function buy(building){
 		document.getElementById('line2').style.display = "";
 	
 		var leftpanel = document.getElementsByClassName("item2")[0];
-		leftpanel.style.padding = "20px 25px 20px 25px";
+		leftpanel.style.padding = "1vw 1.5vw";
 	}
 }
 
@@ -563,7 +563,7 @@ function showAllBuildings(){
 	if(buildingMenu.style.width < "100px"){
 		buildingMenu.style.height = "73%";
     	buildingMenu.style.width = "80%";
-		buildingMenu.style.padding = "15px 15px 15px 15px";
+		buildingMenu.style.padding = "15px 15px";
 		
 		//close other menu if open
     	upgradeMenu.style.height = "0px";
@@ -589,7 +589,7 @@ function showAllUpgrades(){
 	if(upgradeMenu.style.width < "100px"){
 		upgradeMenu.style.height = "73%";
     	upgradeMenu.style.width = "80%";
-		upgradeMenu.style.padding = "15px 15px 15px 15px";
+		upgradeMenu.style.padding = "15px 15px";
 		
 		//close other menu if open
     	buildingMenu.style.height = "0px";
@@ -827,7 +827,7 @@ function GreyOutButtons(){
 
 function CheckAmounts(){	
 	GreyOutButtons();
-	if(nuts >= 12 || nutKids >= 1) {		
+	if(nuts >= 15 || nutKids >= 1) {		
 		var classes = document.getElementsByClassName('buyNutKid');
 		for (var i=0;i<classes.length;i++) {
 			classes[i].style.display = '';
@@ -839,7 +839,7 @@ function CheckAmounts(){
 		
 		if(page != "mobile.html"){
 			var leftpanel = document.getElementsByClassName("item1")[0];
-			leftpanel.style.padding = "20px 25px 20px 25px";
+			leftpanel.style.padding = "1vw 1.5vw";
 		}
 	}
 	
@@ -863,7 +863,7 @@ function CheckAmounts(){
 		
 		if(page != "mobile.html"){
 			var leftpanel = document.getElementsByClassName("item2")[0];
-			leftpanel.style.padding = "20px 25px 20px 25px";
+			leftpanel.style.padding = "1vw 1.5vw";
 		}
 		
 		if(page == "mobile.html" && nutBoyUpgradeShown == false){
@@ -1048,21 +1048,46 @@ function CheckMobile(){
 	}
 }
 
-function Gamble(){
-	var x = prompt("enter an amount of nuts");
+function Gamble(level){
+	switch(level){
+		case 1:
+			var randomNumber = Math.floor(Math.random() * 4) + 1;
+			var multiplyAmount = 3;
+		break;
+		
+		case 2:
+			var randomNumber = Math.floor(Math.random() * 8) + 1;
+			var multiplyAmount = 6;
+		break;
+		
+		case 3:
+			var randomNumber = Math.floor(Math.random() * 17) + 1;
+			var multiplyAmount = 12;
+		break;
+		
+		case 4:
+			var randomNumber = Math.floor(Math.random() * 33) + 1;
+			var multiplyAmount = 24;
+		break;
+		
+		case 5:
+			var randomNumber = Math.floor(Math.random() * 100) + 1;
+			var multiplyAmount = 50;
+		break;
+	}
+	var x = prompt("enter an amount of nuts, total nuts: " + nuts,nuts);
 	if(x >= 1){
 		if(x <= nuts){
-			if(confirm("you selected " + x + " nuts, are you sure you want to gamble them?")){
+			if(confirm("you selected " + x + " nuts, are you sure you want to gamble them for a 25% chance to get " + x * multiplyAmount + " back ?")){
 				nuts = nuts - x;
 				UpdateValues();
-				var randomNumber = Math.floor(Math.random() * 4) + 1;
 				if(randomNumber == 1){
-					alert("you win " + x * 2 + " nuts!");
-					x = x * 3;
-					nuts = nuts + x;				
+					alert("you win " + x * multiplyAmount + " nuts!");
+					x = x * multiplyAmount;
+					nuts = nuts + x;
 					UpdateValues();
 				} else {
-					alert("bad luck my boy, the random number was " + randomNumber + " and you were aiming for 1");
+					alert("bad luck, the random number was " + randomNumber + " and you were aiming for 1");
 				}
 			}
 		} else {

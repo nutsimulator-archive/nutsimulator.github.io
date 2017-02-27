@@ -110,12 +110,42 @@
 					<span id="saved"></span>
 				</div>
 				
-				<button onclick="ShowGambling()" style="position:absolute;top:1.2vw;left:20vw">show gambling menu</button>
+				<button onclick="ShowGambling()" style="position:absolute;top:1.2vw;left:20vw;background-color:#D35400">**NEW** show gambling menu</button>
 				<div id="gambling">
 					<div style="font-size:2.5vw;font-weight:bold;position: relative;bottom: 8px;text-align:center">nut gambling</div>
 					<div>Gamble any amount of nuts for a 25% chance to triple them</div>
-					nuts: <span id="nutsGamble">0</span>
-					<button onclick="Gamble()">gamble</button>
+					nuts: <span id="nutsGamble" style="pointer-events:auto">0</span>
+					<br>
+					
+					<hr size="1" noshade color=black>
+					25% chance to get 3x 
+					<br>
+					<button onclick="Gamble(1)" style="position:relative;top:-0.5vw">gamble</button>
+					<br>
+					
+					<hr size="1" noshade color=black>
+					12% chance to get 6x 
+					<br>
+					<button onclick="Gamble(2)" style="position:relative;top:-0.5vw">gamble</button>
+					<br>
+					
+					<hr size="1" noshade color=black>
+					6% chance to get 12x 
+					<br>
+					<button onclick="Gamble(3)" style="position:relative;top:-0.5vw">gamble</button>
+					<br>
+					
+					<hr size="1" noshade color=black>
+					3% chance to get 24x
+					<br>
+					<button onclick="Gamble(4)" style="position:relative;top:-0.5vw">gamble</button>
+					<br>
+					
+					<hr size="1" noshade color=black>
+					1% chance to get 50x
+					<br>
+					<button onclick="Gamble(5)" style="position:relative;top:-0.5vw">gamble</button>
+					<br>
 				</div>
 				
 			</main>	
