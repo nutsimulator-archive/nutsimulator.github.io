@@ -12,16 +12,32 @@
 		<div id="container">
 			<main>
 				<div id="nutsim">
-					nut simulator v1.3
+					nut simulator v1.5
 				</div>
 				<div id="time">
 					played for 0:00:00
 				</div>
+
+					<button onclick="ShowLevel()" class="button" style="position:absolute;top:12%;left:75%;z-index:999;padding:1.5vw 2.5vw">level</button>
+				<div id="leveldivmobile">
+				<div id="xptonextlevel">
+					<span style="position:relative;top:10%">xp to next level: <span id="xptonextlevelnumber">20</span></span>
+				</div>
+				<div id="level">
+					<span style="position:relative;top:3%">level: <span id="levelnumber">0</span></span>
+				</div>
+				<div id="bonusdamage">
+					<span style="position:relative;top:3%"><span id="multipliernumber">1x</span> bonus <br>nuts/sec</span>
+				</div>
+				<div id="bgbar"></div>
+				<div id="bar" style="text-align:center;overflow-x:visible;white-space:nowrap"><span style="position:relative;top:-0.2vw;margin-left:0.5vw">current xp: <span id="xp">0</span></span></div>
+			</div>
+
 				<span id="middleNutCounter">Nuts: <span id="nuts">0</span> <span style="position:relative;bottom:2px;font-size:3vw" id="damageAdded">+ 0/sec</span></span>
 				<button onclick="toggleMusic()" style="position:absolute;top:0.5%;right:6px;background-color:#7c7c7c;color:white;padding:5px 5px">Toggle Music</button>
 				<button onclick="toggleAudio()" style="position:absolute;top:5%;right:6px;background-color:#606060;color:white;padding:5px 5px">Toggle Audio</button>
 				<div class="textContainer">
-					<button onclick="showAllBuildings()" class="button" style="position:absolute;top:12%;left:6%;z-index:999;padding:1.5vw 2.5vw">show things</button>
+					<button onclick="showAllBuildings()" class="button" style="position:absolute;top:12%;left:6%;z-index:999;padding:1.5vw 2.5vw">things</button>
 					<div class="item1">
 						<div style="font-size:6vw;font-weight:bold;position: relative;bottom: 8px">things</div>
 						<span class="buyNutKid" style="display:none">Nut Kids: <span id="nutKids">0</span></span>
@@ -53,8 +69,8 @@
 						<br>
 						<span class="buyAllUpgrade" style="display:none">All Upgrades: <span id="allUpgrades">0</span></span>
 					</div>
-					
-					<button onclick="showAllUpgrades()" class="button" style="position:absolute;top:12%;left:28%;z-index:999;padding:1.5vw 2.5vw">show upgrades</button>
+
+					<button onclick="showAllUpgrades()" class="button" style="position:absolute;top:12%;left:21%;z-index:999;padding:1.5vw 2.5vw">upgrades</button>
 					<div class="item2">
 						<div style="font-size:6vw;font-weight:bold;position: relative;bottom: 8px">upgrades</div>
 						total nuts/sec: <span id="totalDamage">0</span>
@@ -72,14 +88,14 @@
 					</div>
 					<div id="newUpgrade">      new upgrade available</div>
 				</div>
-				
+
 				<!--the big nut-->
 				<div onmousedown="return false"><!--disable dragging-->
 					<img src="images/icon.png" onmousedown="clickAnimation();clickOnButton()" onmouseup="releaseAnimation();pressed = false" onmouseleave="releaseAnimation();pressed=false" id="middleNut">
 					<div id="amountAdded"></div>
 					<div id="addedNuts">addedNuts</div>
 				</div>
-	
+
 				<div id="middle">
 					<!--<button onclick="clickOnButton()" class="clickButton" id="middleNut">click</button>-->
 					<button onclick="buy('nutKid')" class="buyNutKid" style="display:none;background-color: #EB9532"><b>Nut Kid</b><br>(+<span id="nutKidDamage"> </span> nuts/sec)<br>- <span id="nutKidCost">15</span> nuts</button>
@@ -93,7 +109,7 @@
 					<button onclick="buy('nutGalacticReign')" class="buyNutGalacticReign" style="display:none;background-color: #F62459"><b>Galactic Nut Reign</b><br>(+<span id="nutGalacticReignDamage"> </span> nuts/sec)<br>- <span id="nutGalacticReignCost">5100000000</span> nuts</button>
 					<button onclick="buy('deezNutGuy')" class="buyDeezNutGuy" style="display:none;background-color: #F22613"><b>Deez Nut Guy</b><br>(+<span id="deezNutGuyDamage"> </span> nuts/sec)<br>- <span id="deezNutGuyCost">7500000000</span> nuts</button>
 				</div>
-				
+
 				<div id="bottomLeft">
 					<button onclick="showMenu()" class="button" style="padding:1px 5px">show menu</button>
 					<span id="menu" style="left:85px">
@@ -102,11 +118,73 @@
 						<button onclick="Load()" class="button" id="menuButton3">load save</button>
 					</span>
 				</div>
-				
+
 				<div id="bottomRight" align="right">
 					<span id="saved"></span>
 				</div>
-			</main>	
+
+				<button onclick="ShowGambling()" class="button" style="position:absolute;top:12%;left:40.5%;z-index:999;padding:1.5vw 2.5vw;background-color:#D35400">gamble</button>
+				<div id="gambling">
+					<div style="font-size:6vw;font-weight:bold;position:relative;bottom:8px;text-align:center">nut gambling</div>
+					exact nuts: <span id="nutsGamble" style="pointer-events:auto">0</span>
+					<br>
+
+					<hr size="1" noshade color=black>
+					25% chance to get 3x
+					<br>
+					<button onclick="Gamble(1)" style="position:relative;top:-0.5vw;width:100%;background-color:#bababa">gamble</button>
+					<br>
+
+					<hr size="1" noshade color=black>
+					12% chance to get 6x
+					<br>
+					<button onclick="Gamble(2)" style="position:relative;top:-0.5vw;width:100%;background-color:#a3a3a3">gamble</button>
+					<br>
+
+					<hr size="1" noshade color=black>
+					6% chance to get 12x
+					<br>
+					<button onclick="Gamble(3)" style="position:relative;top:-0.5vw;width:100%;background-color:#777777">gamble</button>
+					<br>
+
+					<hr size="1" noshade color=black>
+					3% chance to get 24x
+					<br>
+					<button onclick="Gamble(4)" style="position:relative;top:-0.5vw;width:100%;background-color:#595959">gamble</button>
+					<br>
+
+					<hr size="1" noshade color=black>
+					1% chance to get 50x
+					<br>
+					<button onclick="Gamble(5)" style="position:relative;top:-0.5vw;width:100%;background-color:#262626">gamble</button>
+					<br>
+
+					<hr size="1" noshade color=black>
+					scissors paper rock for 2.5x nuts
+					<br>
+					<button onclick="ScissorsPaperRock('scissors')" style="position:relative;top:-0.5vw;width:32.3%;background-color:#95A5A6">scissors</button>
+					<button onclick="ScissorsPaperRock('paper')" style="position:relative;top:-0.5vw;width:32.3%;background-color:#BFBFBF">paper</button>
+					<button onclick="ScissorsPaperRock('rock')" style="position:relative;top:-0.5vw;width:32.3%;background-color:#6C7A89">rock</button>
+					<br>
+				</div>
+
+				<button onclick="ShowPrestige()" class="button" style="position:absolute;top:12%;left:57.5%;z-index:999;padding:1.5vw 2.5vw">prestige</button>
+				<div id="prestige">
+					<div style="font-size:6vw;font-weight:bold;position:relative;bottom:8px;text-align:center">prestige</div>
+					current level: <span id="prestigeLevel">0</span>
+					<br>
+					current total nuts/sec: <span id="prestigeDamage">0</span>
+					<br>
+					prestige to gain a permanent <span id="prestigeGain">0</span>x nuts/sec increase
+					<br>
+
+					<button class="button" onclick="Prestige()" style="width:100%;height:7vw">prestige</button>
+				</div>
+
+				<div id="prestigeGainDiv">
+					<span style="position:relative;top:3%"><span id="prestigeGainText"></span>x bonus nuts/sec from prestige</span>
+				</div>
+			</main>
 		</div>
 		<script type="text/javascript" src="js/main.js"></script>
 	</body>

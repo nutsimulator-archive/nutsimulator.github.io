@@ -80,7 +80,7 @@ main {
 	width: 100%;
 }
 
-#middleNut {	
+#middleNut {
 	width: 80vw;
 	height: 80vw;
 	-webkit-animation: zoomIn 1s cubic-bezier(0.215, 0.61, 0.355, 1);
@@ -94,7 +94,7 @@ main {
 	cursor: pointer;
 }
 
-#middleNutCounter {	
+#middleNutCounter {
 	font-weight: bold;
     right: 0px;
     left: 0px;
@@ -121,12 +121,107 @@ main {
 #addedNuts {
     right: 20%;
 	top: 16%;
-    -webkit-transform: translate(-50%, -50%); 
+    -webkit-transform: translate(-50%, -50%);
 	font-family: 'Oswald', sans-serif;
 	font-size: 4vw;
 	position: absolute;
     -webkit-transform: translateZ(0);
 	opacity: 0;
+}
+
+#leveldivmobile {
+		float: left;
+		text-align: left;
+	    box-shadow: 0px 0px 5px #888888;
+		font-size: 4vw;
+		background-color: rgba(255, 255, 255, 1);
+	    top:18%;
+
+		left: 6.3%;
+	    height: 0px;
+	    width: 0px;
+
+	    position: fixed;
+	    z-index: 2;
+	    overflow-x: hidden;
+	    transition: 0.5s;
+		margin-top:10px;
+}
+
+#xptonextlevel {
+	background-color: #E4F1FE;
+	position: absolute;
+	font-size: 4vw;
+	top: 2vw;
+	left: 45vw;
+	-webkit-transform: translate(-50%);
+	text-align: center;
+	padding: 3px 11px;
+	width: 25vw;
+	height: 15%;
+	border-radius: 1.1vw;
+	box-shadow: 2px 2px 5px #888888;
+	z-index:2;
+}
+
+#bonusdamage {
+	background-color: #E4F1FE;
+	background-color: rgba(255,255,255,0.5);
+	position: absolute;
+	text-align: left;
+	font-size: 4vw;
+	top: 12vw;
+	left: 15vw;
+	-webkit-transform: translate(-50%);
+	padding: 3px 11px;
+	width: 25vw;
+	height: 15%;
+	border-radius: 1.1vw;
+	box-shadow: 2px 2px 5px #888888;
+	transition: 0.5s;
+	z-index:1;
+}
+
+#level {
+	background-color: #E4F1FE;
+	-webkit-transform: translate(-50%);
+	position: absolute;
+	top: 2vw;
+	left: 15vw;
+	font-size: 4vw;
+	text-align: center;
+	padding: 3px 11px;
+	width: 25vw;
+	height: 6%;
+	border-radius: 1.1vw;
+	box-shadow: 2px 2px 5px #888888;
+	z-index:3;
+}
+
+#bgbar {
+	background-color: #D2D7D3;
+	position: absolute;
+	top: 20%;
+	left: 32vw;
+	width: 30%;
+	font-size: 1vw;
+	text-align: center;
+	height: 3.5%;
+	border-radius: 20px;
+  box-shadow: 2px 2px 5px #888888;
+	z-index:3;
+}
+
+#bar {
+	background-color: #6BB9F0;
+	position: absolute;
+	top: 20%;
+	left: 32vw;
+	width: 0px;
+	font-size:3vw;
+	height: 3.5%;
+	z-index: 4;
+	border-radius: 20px;
 }
 
 #menu {
@@ -155,6 +250,48 @@ main {
 	overflow: hidden;
 }
 
+#gambling {
+	float: left;
+	text-align: left;
+    box-shadow: 0px 0px 5px #888888;
+	font-size: 4vw;
+	background-color: rgba(255, 255, 255, 1);
+    top:18%;
+
+	left: 6.3%;
+    height: 0px;
+    width: 0px;
+
+    position: fixed;
+    z-index: 2;
+    overflow-x: hidden;
+    transition: 0.5s;
+	margin-top:10px;
+}
+
+#prestige {
+	float: left;
+	text-align: left;
+    box-shadow: 0px 0px 5px #888888;
+	font-size: 4vw;
+	background-color: rgba(255, 255, 255, 1);
+    top:18%;
+
+	left: 6.3%;
+    height: 0px;
+    width: 0px;
+
+    position: fixed;
+    z-index: 2;
+    overflow-x: hidden;
+    transition: 0.5s;
+	margin-top:10px;
+}
+
+#prestigeGainDiv {
+		font-size: 2vw;
+}
+
 .item1 {
 	float: left;
 	text-align: left;
@@ -162,11 +299,11 @@ main {
 	font-size: 4vw;
 	background-color: rgba(255, 255, 255, 1);
     top:18%;
-	
+
 	left: 6.3%;
     height: 0px;
     width: 0px;
-	
+
     position: fixed;
     z-index: 2;
     overflow-x: hidden;
@@ -181,11 +318,11 @@ main {
 	font-size: 4vw;
 	background-color: rgba(255, 255, 255, 1);
     top: 18%;
-	
+
 	left: 6.3%;
     height: 0px;
     width: 0px;
-	
+
     position: fixed;
     z-index: 2;
     overflow-x: hidden;
@@ -264,7 +401,7 @@ button:active {
 	0% {
 		-webkit-transform: scale(1.0);
 	}
-	100% { 
+	100% {
 		-webkit-transform: scale(0.8);
 	}
 }
@@ -273,7 +410,7 @@ button:active {
 	0% {
 		-webkit-transform: scale(0.8);
 	}
-	100% { 
+	100% {
 		-webkit-transform: scale(1.0);
 	}
 }
@@ -283,7 +420,7 @@ button:active {
 		-webkit-transform: scale(1.0) translate(0px, 0px);
         opacity: 0;
 	}
-	100% { 
+	100% {
 		opacity: 1;
 		-webkit-transform: scale(0.8) translate(-40px, 0px);
 	}
@@ -294,7 +431,7 @@ button:active {
 		-webkit-transform: scale(0.8) translate(-40px, 0px);
         opacity: 1;
 	}
-	100% { 
+	100% {
 		-webkit-transform: scale(1.0) translate(0px, 0px);
 		opacity: 0;
 	}
@@ -304,7 +441,7 @@ button:active {
 	0% {
 		-webkit-transform: scale(1.0) translate(0px, 0px);
 	}
-	100% { 
+	100% {
 		-webkit-transform: scale(0.95) translate(0px, 5px);
 	}
 }
@@ -329,11 +466,11 @@ button:active {
 }
 
 @-webkit-keyframes fadein {
-    from { 
-	opacity: 0; 
+    from {
+	opacity: 0;
 	}
-    to   { 
-	opacity: 1; 
+    to   {
+	opacity: 1;
 	}
 }
 
