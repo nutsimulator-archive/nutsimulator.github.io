@@ -109,6 +109,15 @@
 				<div id="bottomRight" align="right">
 					<span id="saved"></span>
 				</div>
+				
+				<button onclick="ShowGambling()" style="position:absolute;top:1.2vw;left:20vw">show gambling menu</button>
+				<div id="gambling">
+					<div style="font-size:2.5vw;font-weight:bold;position: relative;bottom: 8px;text-align:center">nut gambling</div>
+					<div>Gamble any amount of nuts for a 25% chance to triple them</div>
+					nuts: <span id="nutsGamble">0</span>
+					<button onclick="Gamble()">gamble</button>
+				</div>
+				
 			</main>	
 		</div>
 		<script type="text/javascript" src="js/main.js"></script>

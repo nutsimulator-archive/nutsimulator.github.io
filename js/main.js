@@ -145,6 +145,7 @@ function clickOnButton(){
 		GreyOutButtons();
 		nuts = round(nuts + clickDamage);
 		document.getElementById("nuts").innerHTML = kFormatter(round(nuts));
+		document.getElementById('nutsGamble').innerHTML = round(nuts);
 		document.title = ""+nuts+" nuts";
 		CheckAmounts();
 		pressed = true;
@@ -195,6 +196,7 @@ function releaseAnimation() {
 function nutClick(number){
     nuts = round(nuts + number);
 	document.getElementById("nuts").innerHTML = kFormatter(round(nuts));
+	document.getElementById('nutsGamble').innerHTML = round(nuts);
 	document.title = kFormatter(nuts) + " nuts";
 	CheckAmounts();
 	GreyOutButtons();
@@ -477,6 +479,7 @@ function buy(building){
 			}
 		break;
 	}
+	document.getElementById("damageAdded").innerHTML = "+ " + kFormatter(totalDamage) + "/sec";
 	GreyOutButtons();
 	Save();
 	if(page != "mobile.html"){
@@ -629,6 +632,27 @@ function uploadLeave(){
     uploadLabel.style.height = "40px";
     uploadLabel.style.width = "25px";
 	uploadIcon.style.top = "5%";
+}
+
+function ShowGambling(){
+	var gambling = document.getElementById("gambling");
+	if(gambling.style.width < "100px"){
+		gambling.style.height = "80%";
+    	gambling.style.width = "58%";
+		gambling.style.padding = "15px 15px 15px 15px";
+		
+		//show scroll after animation done
+		setTimeout(function (){
+			gambling.style.overflow = "auto";
+		}, 500);
+		
+    } else {
+    	gambling.style.height = "0px";
+    	gambling.style.width = "0px";
+		gambling.style.padding = "0px 0px 0px 0px";
+		
+		gambling.style.overflow = "hidden";
+    }
 }
 
 //saving
@@ -803,7 +827,7 @@ function GreyOutButtons(){
 
 function CheckAmounts(){	
 	GreyOutButtons();
-	if(nuts >= 15 || nutKids >= 1) {		
+	if(nuts >= 12 || nutKids >= 1) {		
 		var classes = document.getElementsByClassName('buyNutKid');
 		for (var i=0;i<classes.length;i++) {
 			classes[i].style.display = '';
@@ -819,13 +843,13 @@ function CheckAmounts(){
 		}
 	}
 	
-	if(nuts >= 50 || nutBoys >= 1) {
+	if(nuts >= 40 || nutBoys >= 1) {
 		var classes = document.getElementsByClassName('buyNutBoy');
 		for (var i=0;i<classes.length;i++) {
 			classes[i].style.display = '';
 		}
     }
-	if (nuts >= 100 || nutBoyBonuses >= 1) {
+	if (nuts >= 80 || nutBoyBonuses >= 1) {
 		var classes = document.getElementsByClassName('buyNutBoyBonus');
 		for (var i=0;i<classes.length;i++) {
 			classes[i].style.display = '';
@@ -850,7 +874,7 @@ function CheckAmounts(){
 			}, 2000);
 		}
     }
-	if(nuts >= 300 || clickUpgrades >= 1) {
+	if(nuts >= 200 || clickUpgrades >= 1) {
 		var classes = document.getElementsByClassName('buyClick');
 		for (var i=0;i<classes.length;i++) {
 			classes[i].style.display = '';
@@ -864,7 +888,7 @@ function CheckAmounts(){
 			}, 2000);
 		}
     }
-	if(nuts >= 5000 || clickUpgrades2 >= 1) {
+	if(nuts >= 3000 || clickUpgrades2 >= 1) {
 		var classes = document.getElementsByClassName('buyClick2');
 		for (var i=0;i<classes.length;i++) {
 			classes[i].style.display = '';
@@ -878,19 +902,19 @@ function CheckAmounts(){
 			}, 2000);
 		}
     }
-	if(nuts >= 1000 || nutMen >= 1) {
+	if(nuts >= 7000 || nutMen >= 1) {
 		var classes = document.getElementsByClassName('buyNutMan');
 		for (var i=0;i<classes.length;i++) {
 			classes[i].style.display = '';
 		}
 	}
-	if(nuts >= 13000 || nutFarms >= 1) {
+	if(nuts >= 11000 || nutFarms >= 1) {
 		var classes = document.getElementsByClassName('buyNutFarm');
 		for (var i=0;i<classes.length;i++) {
 			classes[i].style.display = '';
 		}
     }
-	if(nuts >= 100000 || allUpgrades >= 1) {
+	if(nuts >= 80000 || allUpgrades >= 1) {
 		var classes = document.getElementsByClassName('buyAllUpgrade');
 		for (var i=0;i<classes.length;i++) {
 			classes[i].style.display = '';
@@ -910,19 +934,19 @@ function CheckAmounts(){
 			classes[i].style.display = '';
 		}
     }
-	if(nuts >= 1500000 || nutBanks >= 1) {
+	if(nuts >= 1100000 || nutBanks >= 1) {
 		var classes = document.getElementsByClassName('buyNutBank');
 		for (var i=0;i<classes.length;i++) {
 			classes[i].style.display = '';
 		}
     }
-	if(nuts >= 20000000 || nutEmpires >= 1) {
+	if(nuts >= 17000000 || nutEmpires >= 1) {
 		var classes = document.getElementsByClassName('buyNutEmpire');
 		for (var i=0;i<classes.length;i++) {
 			classes[i].style.display = '';
 		}
     }
-	if(nuts >= 300000000 || nutWorldControls >= 1) {
+	if(nuts >= 2700000000 || nutWorldControls >= 1) {
 		var classes = document.getElementsByClassName('buyNutWorldControl');
 		for (var i=0;i<classes.length;i++) {
 			classes[i].style.display = '';
@@ -934,7 +958,7 @@ function CheckAmounts(){
 			classes[i].style.display = '';
 		}
     }
-	if(nuts >= 10000000000 || deezNutGuys >= 1) {
+	if(nuts >= 6000000000 || deezNutGuys >= 1) {
 		var classes = document.getElementsByClassName('buyDeezNutGuy');
 		for (var i=0;i<classes.length;i++) {
 			classes[i].style.display = '';
@@ -947,6 +971,7 @@ function UpdateValues(){
 	var clickUpgrades2Temp = 50 * clickUpgrades2;
 	clickDamage = 1 + clickUpgradesTemp + clickUpgrades2Temp;
 	document.getElementById('nuts').innerHTML = kFormatter(round(nuts));
+	document.getElementById('nutsGamble').innerHTML = round(nuts);
 	document.getElementById('nutKids').innerHTML = nutKids;
 	document.getElementById('nutBoys').innerHTML = nutBoys;
 	document.getElementById('nutBoyBonuses').innerHTML = nutBoyBonuses;
@@ -987,11 +1012,11 @@ function UpdateCosts(){
 	nutFarmCostNext = Math.floor(13000 * Math.pow(1.1,nutFarms));
 	allUpgradeCostNext = Math.floor(100000 * Math.pow(5,allUpgrades));
 	nutFactoryCostNext = Math.floor(150000 * Math.pow(1.1,nutFactories));
-	nutBankCostNext = Math.floor(1500000 * Math.pow(1.1,nutBanks));
+	nutBankCostNext = Math.floor(1400000 * Math.pow(1.1,nutBanks));
 	nutEmpireCostNext = Math.floor(20000000 * Math.pow(1.1,nutEmpires));
-	nutWorldControlCostNext = Math.floor(300000000 * Math.pow(1.1,nutWorldControls));
-	nutGalacticReignCostNext = Math.floor(4000000000 * Math.pow(1.1,nutGalacticReigns));
-	deezNutGuyCostNext = Math.floor(10000000000 * Math.pow(1.1,deezNutGuys));
+	nutWorldControlCostNext = Math.floor(330000000 * Math.pow(1.1,nutWorldControls));
+	nutGalacticReignCostNext = Math.floor(5100000000 * Math.pow(1.1,nutGalacticReigns));
+	deezNutGuyCostNext = Math.floor(7500000000 * Math.pow(1.1,deezNutGuys));
 	document.getElementById('nutKidCost').innerHTML = kFormatter(nutKidCostNext);
 	document.getElementById('nutBoyCost').innerHTML = kFormatter(nutBoyCostNext);
 	document.getElementById('nutBoyBonusCost').innerHTML = kFormatter(nutBoyBonusCostNext);
@@ -1013,12 +1038,36 @@ function UpdateDamage(){
 }
 
 function CheckMobile(){
-	if(window.innerHeight > window.innerWidth && page == "index.html"){
+	var ratio = window.innerWidth / window.innerHeight;
+	if(ratio < 0.745 && page == "index.html"){
 		window.location.href = "mobile.html";
-	} else if (window.innerHeight < window.innerWidth && page == "mobile.html"){
+	} else if (ratio >= 0.745 && page == "mobile.html"){
 		window.location.href = "index.html";
-	} else if (window.innerHeight > window.innerWidth && page == ""){
+	} else if (ratio < 0.745 && page == ""){
 		window.location.href = "mobile.html";
+	}
+}
+
+function Gamble(){
+	var x = prompt("enter an amount of nuts");
+	if(x >= 1){
+		if(x <= nuts){
+			if(confirm("you selected " + x + " nuts, are you sure you want to gamble them?")){
+				nuts = nuts - x;
+				UpdateValues();
+				var randomNumber = Math.floor(Math.random() * 4) + 1;
+				if(randomNumber == 1){
+					alert("you win " + x * 2 + " nuts!");
+					x = x * 3;
+					nuts = nuts + x;				
+					UpdateValues();
+				} else {
+					alert("bad luck my boy, the random number was " + randomNumber + " and you were aiming for 1");
+				}
+			}
+		} else {
+			alert("enter an amount under your current nuts");
+		}
 	}
 }
 
