@@ -12,7 +12,7 @@
 		<div id="container">
 			<main>
 				<div id="nutsim">
-					nut simulator v1.5
+					nut simulator v1.7
 				</div>
 				<div id="time">
 					played for 0:00:00
@@ -40,34 +40,35 @@
 					<button onclick="showAllBuildings()" class="button" style="position:absolute;top:12%;left:6%;z-index:999;padding:1.5vw 2.5vw">things</button>
 					<div class="item1">
 						<div style="font-size:6vw;font-weight:bold;position: relative;bottom: 8px">things</div>
-						<span class="buyNutKid" style="display:none">Nut Kids: <span id="nutKids">0</span></span>
-						<br>
-						<span class="buyNutBoy" style="display:none">Nut Boys: <span id="nutBoys">0</span></span>
-						<br>
-						<span class="buyNutMan" style="display:none">Nut Men: <span id="nutMen">0</span></span>
-						<br>
-						<span class="buyNutFarm" style="display:none">Nut Farms: <span id="nutFarms">0</span></span>
-						<br>
-						<span class="buyNutFactory" style="display:none">Nut Factories: <span id="nutFactories">0</span></span>
-						<br>
-						<span class="buyNutBank" style="display:none">Nut Banks: <span id="nutBanks">0</span></span>
-						<br>
-						<span class="buyNutEmpire" style="display:none">Nut Empires: <span id="nutEmpires">0</span></span>
-						<br>
-						<span class="buyNutWorldControl" style="display:none">Nut World Control: <span id="nutWorldControls">0</span></span>
-						<br>
-						<span class="buyNutGalacticReign" style="display:none">Galactic Nut Reigns: <span id="nutGalacticReigns">0</span></span>
-						<br>
-						<span class="buyDeezNutGuy" style="display:none">Deez Nut Guys: <span id="deezNutGuys">0</span></span>
-						<br>
-						<hr size="1" noshade color=black>
-						<span class="buyNutBoyBonus" style="display:none">Nut Upgrades: <span id="nutBoyBonuses">0</span></span>
-						<br>
-						<span class="buyClick" style="display:none">Click Upgrades: <span id="clickUpgrades">0</span></span>
-						<br>
-						<span class="buyClick2" style="display:none">Click 2 Upgrades: <span id="clickUpgrades2">0</span></span>
-						<br>
-						<span class="buyAllUpgrade" style="display:none">All Upgrades: <span id="allUpgrades">0</span></span>
+						<div class="buyNutKid" style="display:none">Nut Kids: <span id="nutKids">0</span> - <span id="nutKidTotalDmg">1</span> n/s</div>
+
+						<div class="buyNutBoy" style="display:none">Nut Boys: <span id="nutBoys">0</span> - <span id="nutBoyTotalDmg">1</span> n/s</div>
+
+						<div class="buyNutMan" style="display:none">Nut Men: <span id="nutMen">0</span> - <span id="nutManTotalDmg">1</span> n/s</div>
+
+						<div class="buyNutFarm" style="display:none">Nut Farms: <span id="nutFarms">0</span> - <span id="nutFarmTotalDmg">1</span> n/s</div>
+
+						<div class="buyNutFactory" style="display:none">Nut Factories: <span id="nutFactories">0</span> - <span id="nutFactoryTotalDmg">1</span> n/s</div>
+
+						<div class="buyNutBank" style="display:none">Nut Banks: <span id="nutBanks">0</span> - <span id="nutBankTotalDmg">1</span> n/s</div>
+
+						<div class="buyNutEmpire" style="display:none">Nut Empires: <span id="nutEmpires">0</span> - <span id="nutEmpireTotalDmg">1</span> n/s</div>
+
+						<div class="buyNutWorldControl" style="display:none">Nut World Control: <span id="nutWorldControls">0</span> - <span id="nutWorldControlTotalDmg">1</span> n/s</div>
+
+						<div class="buyNutGalacticReign" style="display:none">Galactic Nut Reigns: <span id="nutGalacticReigns">0</span> - <span id="nutGalacticReignTotalDmg">1</span> n/s</div>
+
+						<div class="buyDeezNutGuy" style="display:none">Deez Nut Guys: <span id="deezNutGuys">0</span> - <span id="deezNutGuyTotalDmg">1</span> n/s</div>
+						<hr size="1" noshade color=black id="line">
+						<div class="buyNutBoyBonus" style="display:none">Bigger Nuts: <span id="nutBoyBonuses">0</span></div>
+						
+						<div class="buyClick" style="display:none">Powerful Clicks: <span id="clickUpgrades">0</span> - <span id="clickUpgradeDamage">1</span> click bonus</div>
+
+						<div class="buyClick2" style="display:none">Big Boy Clicks: <span id="clickUpgrades2">0</span> - <span id="clickUpgrade2Damage">1</span> click bonus</div>
+
+						<div class="buyAllUpgrade" style="display:none">Nut Masteries: <span id="allUpgrades">0</span></div>
+						
+						<div class="buyClick3" style="display:none">Nuclear Clicks: <span id="clickUpgrades3">0</span> - <span id="clickUpgrade3Damage">1</span> click bonus</div>
 					</div>
 
 					<button onclick="showAllUpgrades()" class="button" style="position:absolute;top:12%;left:21%;z-index:999;padding:1.5vw 2.5vw">upgrades</button>
@@ -85,6 +86,8 @@
 						<button onclick="buy('clickUpgrade2')" class="buyClick2" style="display:none;background-color: #87D37C"><b>Big Boy Clicks</b><br>click bonus + 50<br>- <span id="clickCost2">5000</span> nuts</button>
 						<br>
 						<button onclick="buy('allUpgrade')" class="buyAllUpgrade" style="display:none;background-color: #26A65B"><b>Nut Mastery</b><br>all except click x 2<br>- <span id="allUpgradeCost">100000</span> nuts</button>
+						<br>
+						<button onclick="buy('clickUpgrade3')" class="buyClick3" style="display:none;background-color: #03C9A9"><b>Nuclear Clicks</b><br>click bonus x 2<br>- <span id="clickCost3">300000</span> nuts</button>
 					</div>
 					<div id="newUpgrade">      new upgrade available</div>
 				</div>
@@ -182,10 +185,20 @@
 				</div>
 
 				<div id="prestigeGainDiv">
-					<span style="position:relative;top:3%"><span id="prestigeGainText"></span>x bonus nuts/sec from prestige</span>
+					<span style="position:relative;top:3%"><span id="prestigeGainText"></span> x bonus nuts/sec from prestige</span>
 				</div>
 			</main>
 		</div>
 		<script type="text/javascript" src="js/main.js"></script>
+		<script>
+		  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+		  ga('create', 'UA-92834321-1', 'auto');
+		  ga('send', 'pageview');
+
+		</script>
 	</body>
 </html>
