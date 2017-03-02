@@ -18,12 +18,15 @@ var nutEmpires = 0;
 var nutWorldControls = 0;
 var nutGalacticReigns = 0;
 var deezNutGuys = 0;
+var nutTimeTravels = 0;
+var nutUniversalDominations = 0;
+var nutGods = 0;
+var nutAfterlives = 0;
 var clickDamage = 1;
 var clickUpgrades = 0;
 var clickUpgrades2 = 0;
 var clickUpgrades3 = 0;
 var allUpgrades = 0;
-var allVariables = [nuts,nutKids,nutBoys,nutBoyBonuses,allUpgrades,nutMen,nutFarms,nutFactories,nutBanks,nutEmpires,nutWorldControls,nutGalacticReigns,deezNutGuys,clickUpgrades,clickUpgrades2];
 var h = 0;
 var m = 0;
 var s = 0;
@@ -40,6 +43,7 @@ var levelAmount = 0;
 var levelMultiplier = 1;
 
 var bgNum = 1;
+var ranInvert = false;
 
 var prestigeGain = 0;
 
@@ -48,7 +52,6 @@ var page = url.substring(url.lastIndexOf('/') + 1);
 
 var nutKidCostNext = 0;
 var nutBoyCostNext = 0;
-var nutBoyBonusCostNext = 0;
 var nutManCostNext = 0;
 var nutFarmCostNext = 0;
 var nutFactoryCostNext = 0;
@@ -57,6 +60,12 @@ var nutEmpireCostNext = 0;
 var nutWorldControlCostNext = 0;
 var nutGalacticReignCostNext = 0;
 var deezNutGuyCostNext = 0;
+var nutTimeTravelCostNext = 0;
+var nutUniversalDominationCostNext = 0;
+var nutGodCostNext = 0;
+var nutAfterlifeCostNext = 0;
+
+var nutBoyBonusCostNext = 0;
 var clickUpgradeCostNext = 0;
 var clickUpgrade2CostNext = 0;
 var allUpgradeCostNext = 0;
@@ -71,7 +80,11 @@ var nutBankDamage = 1400;
 var nutEmpireDamage = 7800;
 var nutWorldControlDamage = 44000;
 var nutGalacticReignDamage = 260000;
-var deezNutGuyDamage = 16000000;
+var deezNutGuyDamage = 1600000;
+var nutTimeTravelDamage = 10000000;
+var nutUniversalDominationDamage = 65000000;
+var nutGodDamage = 430000000;
+var nutAfterlifeDamage = 2900000000;
 var totalDamage = 0;
 
 var buyAudio = new Audio('audio/buy.wav');
@@ -140,6 +153,18 @@ function CheckBackground(){
 	} else if (maxNuts >= 99999999999999999999 && maxNuts <= 999999999999999999999){
 		bgNum = 21;
 	} else if (maxNuts >= 999999999999999999999){
+		if(ranInvert == false){
+			ranInvert = true;
+			setTimeout(function (){
+					document.body.style.transition="0.3s"
+				document.body.style.filter="invert(1) brightness(3)";
+				document.body.style.backgroundImage="url()";
+				setTimeout(function (){
+					document.body.style.transition="1s"
+					document.body.style.filter="invert(0) brightness(1)"
+				}, 1000);
+			}, 200);
+		}
 		bgNum = 22;
 	}
 	document.body.style.backgroundImage = "url('images/nuts/"+bgNum+".jpg')";
@@ -337,9 +362,6 @@ function buy(building){
 			if(nuts >= nutKidCost){
 				nutKids = nutKids + 1;
 				nuts = nuts - nutKidCost;
-				if (nutKids % 10 === 0 && nutKids <= 200){
-    			nutKidDamage = round(nutKidDamage * 1.5);
-				}
 				UpdateValues();
 				UpdateDamage();
 				UpdateCosts();
@@ -358,9 +380,6 @@ function buy(building){
 			if(nuts >= nutBoyCost){
 				nutBoys = nutBoys + 1;
 				nuts = nuts - nutBoyCost;
-				if (nutBoys % 10 === 0 && nutBoys <= 200){
-    			nutBoyDamage = round(nutBoyDamage * 1.5);
-				}
 				UpdateValues();
 				UpdateDamage();
 				UpdateCosts();
@@ -498,6 +517,10 @@ function buy(building){
 					nutWorldControlDamage = nutWorldControlDamage * 2 + prestigeGain;
 					nutGalacticReignDamage = nutGalacticReignDamage * 2 + prestigeGain;
 					deezNutGuyDamage = deezNutGuyDamage * 2 + prestigeGain;
+					nutTimeTravelDamage = nutTimeTravelDamage * 2 + prestigeGain;
+					nutUniversalDominationDamage = nutUniversalDominationDamage * 2 + prestigeGain;
+					nutGodDamage = nutGodDamage * 2 + prestigeGain;
+					nutAfterlifeDamage = nutAfterlifeDamage * 2 + prestigeGain;
 					UpdateValues();
 					UpdateDamage();
 					UpdateCosts();
@@ -603,10 +626,82 @@ function buy(building){
 		break;
 
 		case "deezNutGuy":
-			var deezNutGuyCost = Math.floor(7500000000 * Math.pow(1.1,deezNutGuys));
+			var deezNutGuyCost = Math.floor(75000000000 * Math.pow(1.1,deezNutGuys));
 			if(nuts >= deezNutGuyCost){
 				deezNutGuys = deezNutGuys + 1;
 				nuts = nuts - deezNutGuyCost;
+				UpdateValues();
+				UpdateDamage();
+				UpdateCosts();
+				stopAudio(buyAudio);
+				buyAudio.play();
+				xp += 0.5;
+				UpdateLevel();
+			} else {
+				stopAudio(cantBuyAudio);
+				cantBuyAudio.play();
+			}
+		break;
+
+		case "nutTimeTravel":
+			var nutTimeTravelCost = Math.floor(1000000000000 * Math.pow(1.1,nutTimeTravels));
+			if(nuts >= nutTimeTravelCost){
+				nutTimeTravels = nutTimeTravels + 1;
+				nuts = nuts - nutTimeTravelCost;
+				UpdateValues();
+				UpdateDamage();
+				UpdateCosts();
+				stopAudio(buyAudio);
+				buyAudio.play();
+				xp += 0.5;
+				UpdateLevel();
+			} else {
+				stopAudio(cantBuyAudio);
+				cantBuyAudio.play();
+			}
+		break;
+
+		case "nutUniversalDomination":
+			var nutUniversalDominationCost = Math.floor(40000000000000 * Math.pow(1.1,nutUniversalDominations));
+			if(nuts >= nutUniversalDominationCost){
+				nutUniversalDominations = nutUniversalDominations + 1;
+				nuts = nuts - nutUniversalDominationCost;
+				UpdateValues();
+				UpdateDamage();
+				UpdateCosts();
+				stopAudio(buyAudio);
+				buyAudio.play();
+				xp += 0.5;
+				UpdateLevel();
+			} else {
+				stopAudio(cantBuyAudio);
+				cantBuyAudio.play();
+			}
+		break;
+
+		case "nutGod":
+			var nutGodCost = Math.floor(170000000000000 * Math.pow(1.1,nutGods));
+			if(nuts >= nutGodCost){
+				nutGods = nutGods + 1;
+				nuts = nuts - nutGodCost;
+				UpdateValues();
+				UpdateDamage();
+				UpdateCosts();
+				stopAudio(buyAudio);
+				buyAudio.play();
+				xp += 0.5;
+				UpdateLevel();
+			} else {
+				stopAudio(cantBuyAudio);
+				cantBuyAudio.play();
+			}
+		break;
+
+		case "nutAfterlife":
+			var nutAfterlifeCost = Math.floor(2000000000000000 * Math.pow(1.1,nutAfterlives));
+			if(nuts >= nutAfterlifeCost){
+				nutAfterlives = nutAfterlives + 1;
+				nuts = nuts - nutAfterlifeCost;
 				UpdateValues();
 				UpdateDamage();
 				UpdateCosts();
@@ -875,7 +970,7 @@ function ShowLevel(){
 	var upgradeMenu = document.getElementsByClassName("item2")[0];
 	document.getElementById("prestigeLevel").innerHTML = level;
 	document.getElementById("prestigeDamage").innerHTML = totalDamage;
-	document.getElementById("prestigeGain").innerHTML = round((level * 10000 + nutKids * nutKidDamage + nutMen * nutManDamage + nutFarms * nutFarmDamage + nutFactories * nutFactoryDamage + nutBanks * nutBankDamage + nutEmpires * nutEmpireDamage + nutWorldControls * nutWorldControlDamage+ nutGalacticReigns * nutGalacticReignDamage + deezNutGuys * deezNutGuyDamage)/10000000);
+	document.getElementById("prestigeGain").innerHTML = round((level * 10000 + nutKids * nutKidDamage + nutMen * nutManDamage + nutFarms * nutFarmDamage + nutFactories * nutFactoryDamage + nutBanks * nutBankDamage + nutEmpires * nutEmpireDamage + nutWorldControls * nutWorldControlDamage+ nutGalacticReigns * nutGalacticReignDamage + deezNutGuys * deezNutGuyDamage + nutTimeTravels * nutTimeTravelDamage + nutUniversalDominations * nutUniversalDominationDamage + nutGods * nutGodDamage + nutAfterlives * nutAfterlifeDamage)/10000000);
 
 	if(page == "mobile.html"){
 		if(levelDiv.style.width < "100px"){
@@ -977,7 +1072,7 @@ function ShowPrestige(){
 	var upgradeMenu = document.getElementsByClassName("item2")[0];
 	document.getElementById("prestigeLevel").innerHTML = level;
 	document.getElementById("prestigeDamage").innerHTML = totalDamage;
-	document.getElementById("prestigeGain").innerHTML = round((level * 10000 + nutKids * nutKidDamage + nutMen * nutManDamage + nutFarms * nutFarmDamage + nutFactories * nutFactoryDamage + nutBanks * nutBankDamage + nutEmpires * nutEmpireDamage + nutWorldControls * nutWorldControlDamage+ nutGalacticReigns * nutGalacticReignDamage + deezNutGuys * deezNutGuyDamage)/10000000);
+	document.getElementById("prestigeGain").innerHTML = round((level * 10000 + nutKids * nutKidDamage + nutMen * nutManDamage + nutFarms * nutFarmDamage + nutFactories * nutFactoryDamage + nutBanks * nutBankDamage + nutEmpires * nutEmpireDamage + nutWorldControls * nutWorldControlDamage+ nutGalacticReigns * nutGalacticReignDamage + deezNutGuys * deezNutGuyDamage + nutTimeTravels * nutTimeTravelDamage + nutUniversalDominations * nutUniversalDominationDamage + nutGods * nutGodDamage + nutAfterlives * nutAfterlifeDamage)/10000000);
 	
 	if(page != "mobile.html"){
 			stopAudio(menuAudio);
@@ -1036,11 +1131,11 @@ function ShowPrestige(){
 }
 
 function Prestige(){
-	var tempGain = round((level * 10000 + nutKids * nutKidDamage + nutMen * nutManDamage + nutFarms * nutFarmDamage + nutFactories * nutFactoryDamage + nutBanks * nutBankDamage + nutEmpires * nutEmpireDamage + nutWorldControls * nutWorldControlDamage+ nutGalacticReigns * nutGalacticReignDamage + deezNutGuys * deezNutGuyDamage)/10000000);
+	var tempGain = round((level * 10000 + nutKids * nutKidDamage + nutMen * nutManDamage + nutFarms * nutFarmDamage + nutFactories * nutFactoryDamage + nutBanks * nutBankDamage + nutEmpires * nutEmpireDamage + nutWorldControls * nutWorldControlDamage+ nutGalacticReigns * nutGalacticReignDamage + deezNutGuys * deezNutGuyDamage + nutTimeTravels * nutTimeTravelDamage + nutUniversalDominations * nutUniversalDominationDamage + nutGods * nutGodDamage + nutAfterlives * nutAfterlifeDamage)/10000000);
 	if(tempGain >= 0.01){
 		if (confirm("are you sure you want to delete all progress and prestige with a " +  round(tempGain) + " nut bonus?")) {
 			deleted = true;
-			prestigeGain = prestigeGain + round((level * 10000 + nutKids * nutKidDamage + nutMen * nutManDamage + nutFarms * nutFarmDamage + nutFactories * nutFactoryDamage + nutBanks * nutBankDamage + nutEmpires * nutEmpireDamage + nutWorldControls * nutWorldControlDamage+ nutGalacticReigns * nutGalacticReignDamage + deezNutGuys * deezNutGuyDamage)/10000000);
+			prestigeGain = prestigeGain + round((level * 10000 + nutKids * nutKidDamage + nutMen * nutManDamage + nutFarms * nutFarmDamage + nutFactories * nutFactoryDamage + nutBanks * nutBankDamage + nutEmpires * nutEmpireDamage + nutWorldControls * nutWorldControlDamage+ nutGalacticReigns * nutGalacticReignDamage + deezNutGuys * deezNutGuyDamage + nutTimeTravels * nutTimeTravelDamage + nutUniversalDominations * nutUniversalDominationDamage + nutGods * nutGodDamage + nutAfterlives * nutAfterlifeDamage)/10000000);
 			Save();
 			
 			deleted = true;
@@ -1075,6 +1170,10 @@ function Save(){
 		'nutWorldControls': nutWorldControls,
 		'nutGalacticReigns': nutGalacticReigns,
 		'deezNutGuys': deezNutGuys,
+		'nutTimeTravels': nutTimeTravels,
+		'nutUniversalDominations': nutUniversalDominations,
+		'nutGods': nutGods,
+		'nutAfterlives': nutAfterlives,
 		'totalDamage': totalDamage,
 		'audioMuted': audioMuted,
 		'musicMuted': musicMuted,
@@ -1096,7 +1195,12 @@ function Save(){
 		'nutWorldControlDamage': nutWorldControlDamage,
 		'nutGalacticReignDamage': nutGalacticReignDamage,
 		'deezNutGuyDamage': deezNutGuyDamage,
+		'nutTimeTravelDamage': nutTimeTravelDamage,
+		'nutUniversalDominationDamage': nutUniversalDominationDamage,
+		'nutGodDamage': nutGodDamage,
+		'nutAfterlifeDamage': nutAfterlifeDamage,
 		'maxNuts': maxNuts,
+		'ranInvert': ranInvert
 	}
 	localStorage.setItem("save",JSON.stringify(save));
 	var prestigeSave = {
@@ -1142,6 +1246,10 @@ function Load(){
 		if (typeof savegame.nutWorldControls !== "undefined") nutWorldControls = savegame.nutWorldControls;
 		if (typeof savegame.nutGalacticReigns !== "undefined") nutGalacticReigns = savegame.nutGalacticReigns;
 		if (typeof savegame.deezNutGuys !== "undefined") deezNutGuys = savegame.deezNutGuys;
+		if (typeof savegame.nutTimeTravels !== "undefined") nutTimeTravels = savegame.nutTimeTravels;
+		if (typeof savegame.nutUniversalDominations !== "undefined") nutUniversalDominations = savegame.nutUniversalDominations;
+		if (typeof savegame.nutGods !== "undefined") nutGods = savegame.nutGods;
+		if (typeof savegame.nutAfterlives !== "undefined") nutAfterlives = savegame.nutAfterlives;
 		if (typeof savegame.timeSinceStart !== "undefined") timeSinceStart = savegame.timeSinceStart;
 		if (typeof savegame.totalDamage !== "undefined") totalDamage = savegame.totalDamage;
 		if (typeof savegame.audioMuted !== "undefined") audioMuted = savegame.audioMuted;
@@ -1164,7 +1272,12 @@ function Load(){
 		if (typeof savegame.nutWorldControlDamage !== "undefined") nutWorldControlDamage = savegame.nutWorldControlDamage;
 		if (typeof savegame.nutGalacticReignDamage !== "undefined") nutGalacticReignDamage = savegame.nutGalacticReignDamage;
 		if (typeof savegame.deezNutGuyDamage !== "undefined") deezNutGuyDamage = savegame.deezNutGuyDamage;
+		if (typeof savegame.nutTimeTravelDamage !== "undefined") nutTimeTravelDamage = savegame.nutTimeTravelDamage;
+		if (typeof savegame.nutUniversalDominationDamage !== "undefined") nutUniversalDominationDamage = savegame.nutUniversalDominationDamage;
+		if (typeof savegame.nutGodDamage !== "undefined") nutGodDamage = savegame.nutGodDamage;
+		if (typeof savegame.nutAfterlifeDamage !== "undefined") nutAfterlifeDamage = savegame.nutAfterlifeDamage;
 		if (typeof savegame.maxNuts !== "undefined") maxNuts = savegame.maxNuts;
+		if (typeof savegame.ranInvert !== "undefined") ranInvert = savegame.ranInvert;
 	}
 
 	if (localStorage.getItem("prestigeSave") !== null) {
@@ -1245,6 +1358,30 @@ function GreyOutButtons(){
 		document.getElementsByClassName('buyDeezNutGuy')[1].style.webkitFilter = "";
 	}
 
+	if(nuts < nutTimeTravelCostNext){
+		document.getElementsByClassName('buyNutTimeTravel')[1].style.webkitFilter = "brightness(70%)";
+	} else if (nuts >= nutTimeTravelCostNext){
+		document.getElementsByClassName('buyNutTimeTravel')[1].style.webkitFilter = "";
+	}
+
+	if(nuts < nutUniversalDominationCostNext){
+		document.getElementsByClassName('buyNutUniversalDomination')[1].style.webkitFilter = "brightness(70%)";
+	} else if (nuts >= nutUniversalDominationCostNext){
+		document.getElementsByClassName('buyNutUniversalDomination')[1].style.webkitFilter = "";
+	}
+
+	if(nuts < nutGodCostNext){
+		document.getElementsByClassName('buyNutGod')[1].style.webkitFilter = "brightness(70%)";
+	} else if (nuts >= nutGodCostNext){
+		document.getElementsByClassName('buyNutGod')[1].style.webkitFilter = "";
+	}
+
+	if(nuts < nutAfterlifeCostNext){
+		document.getElementsByClassName('buyNutAfterlife')[1].style.webkitFilter = "brightness(70%)";
+	} else if (nuts >= nutAfterlifeCostNext){
+		document.getElementsByClassName('buyNutAfterlife')[1].style.webkitFilter = "";
+	}
+
 	if(nuts < nutBoyBonusCostNext){
 		document.getElementsByClassName('buyNutBoyBonus')[1].style.webkitFilter = "brightness(70%)";
 	} else if (nuts >= nutBoyBonusCostNext){
@@ -1322,7 +1459,6 @@ function CheckAmounts(){
 			document.getElementById('line2').style.display = "";
 			var leftpanel = document.getElementsByClassName("item2")[0];
 			leftpanel.style.padding = "1vw 1.5vw";
-			document.getElementById('line').style.display = "";
 		}
 
 		if(page == "mobile.html" && nutBoyUpgradeShown == false){
@@ -1355,8 +1491,6 @@ function CheckAmounts(){
 			setTimeout(function (){
 				NewUpgrade();
 			}, 2000);
-		} else if (page != "mobile.html"){
-			document.getElementById('line').style.display = "";
 		}
     }
 	if(nuts >= 3000 || clickUpgrades2 >= 1) {
@@ -1371,8 +1505,6 @@ function CheckAmounts(){
 			setTimeout(function (){
 				NewUpgrade();
 			}, 2000);
-		} else if (page != "mobile.html"){
-			document.getElementById('line').style.display = "";
 		}
     }
 	if(nuts >= 300000 || clickUpgrades3 >= 1) {
@@ -1387,8 +1519,6 @@ function CheckAmounts(){
 			setTimeout(function (){
 				NewUpgrade();
 			}, 2000);
-		} else if (page != "mobile.html"){
-			document.getElementById('line').style.display = "";
 		}
     }
 	if(nuts >= 800 || nutMen >= 1) {
@@ -1415,8 +1545,6 @@ function CheckAmounts(){
 			setTimeout(function (){
 				NewUpgrade();
 			}, 2000);
-		} else if (page != "mobile.html"){
-			document.getElementById('line').style.display = "";
 		}
     }
 	if(nuts >= 150000 || nutFactories >= 1) {
@@ -1437,7 +1565,7 @@ function CheckAmounts(){
 			classes[i].style.display = '';
 		}
     }
-	if(nuts >= 2700000000 || nutWorldControls >= 1) {
+	if(nuts >= 300000000 || nutWorldControls >= 1) {
 		var classes = document.getElementsByClassName('buyNutWorldControl');
 		for (var i=0;i<classes.length;i++) {
 			classes[i].style.display = '';
@@ -1449,8 +1577,32 @@ function CheckAmounts(){
 			classes[i].style.display = '';
 		}
     }
-	if(nuts >= 6000000000 || deezNutGuys >= 1) {
+	if(nuts >= 50000000000 || deezNutGuys >= 1) {
 		var classes = document.getElementsByClassName('buyDeezNutGuy');
+		for (var i=0;i<classes.length;i++) {
+			classes[i].style.display = '';
+		}
+    }
+	if(nuts >= 700000000000 || nutTimeTravels >= 1) {
+		var classes = document.getElementsByClassName('buyNutTimeTravel');
+		for (var i=0;i<classes.length;i++) {
+			classes[i].style.display = '';
+		}
+    }
+	if(nuts >= 30000000000000 || nutUniversalDominations >= 1) {
+		var classes = document.getElementsByClassName('buyNutUniversalDomination');
+		for (var i=0;i<classes.length;i++) {
+			classes[i].style.display = '';
+		}
+    }
+	if(nuts >= 140000000000000 || nutGods >= 1) {
+		var classes = document.getElementsByClassName('buyNutGod');
+		for (var i=0;i<classes.length;i++) {
+			classes[i].style.display = '';
+		}
+    }
+	if(nuts >= 1800000000000000 || nutAfterlives >= 1) {
+		var classes = document.getElementsByClassName('buyNutAfterlife');
 		for (var i=0;i<classes.length;i++) {
 			classes[i].style.display = '';
 		}
@@ -1486,6 +1638,10 @@ function UpdateValues(){
 	document.getElementById('nutWorldControls').innerHTML = nutWorldControls;
 	document.getElementById('nutGalacticReigns').innerHTML = nutGalacticReigns;
 	document.getElementById('deezNutGuys').innerHTML = deezNutGuys;
+	document.getElementById('nutTimeTravels').innerHTML = nutTimeTravels;
+	document.getElementById('nutUniversalDominations').innerHTML = nutUniversalDominations;
+	document.getElementById('nutGods').innerHTML = nutGods;
+	document.getElementById('nutAfterlives').innerHTML = nutAfterlives;
 	document.getElementById('addedNuts').innerHTML = "+ " + kFormatter(totalDamage);
 	document.getElementById('totalDamage').innerHTML = kFormatter(totalDamage);
 	document.getElementById("damageAdded").innerHTML = "+ " + kFormatter(totalDamage) + "/sec";
@@ -1500,6 +1656,10 @@ function UpdateValues(){
 	document.getElementById('nutWorldControlDamage').innerHTML = kFormatter(round(nutWorldControlDamage));
 	document.getElementById('nutGalacticReignDamage').innerHTML = kFormatter(round(nutGalacticReignDamage));
 	document.getElementById('deezNutGuyDamage').innerHTML = kFormatter(round(deezNutGuyDamage));
+	document.getElementById('nutTimeTravelDamage').innerHTML = kFormatter(round(nutTimeTravelDamage));
+	document.getElementById('nutUniversalDominationDamage').innerHTML = kFormatter(round(nutUniversalDominationDamage));
+	document.getElementById('nutGodDamage').innerHTML = kFormatter(round(nutGodDamage));
+	document.getElementById('nutAfterlifeDamage').innerHTML = kFormatter(round(nutAfterlifeDamage));
 	
 	document.getElementById('clickUpgradeDamage').innerHTML = kFormatter(round(clickUpgradesTemp));
 	document.getElementById('clickUpgrade2Damage').innerHTML = kFormatter(round(clickUpgrades2Temp));
@@ -1515,6 +1675,10 @@ function UpdateValues(){
 	document.getElementById('nutWorldControlTotalDmg').innerHTML = kFormatter(round(nutWorldControls * (prestigeGain + levelMultiplier * nutWorldControlDamage)));
 	document.getElementById('nutGalacticReignTotalDmg').innerHTML = kFormatter(round(nutGalacticReigns * (prestigeGain + levelMultiplier * nutGalacticReignDamage)));
 	document.getElementById('deezNutGuyTotalDmg').innerHTML = kFormatter(round(deezNutGuys * (prestigeGain + levelMultiplier * deezNutGuyDamage)));
+	document.getElementById('nutTimeTravelTotalDmg').innerHTML = kFormatter(round(nutTimeTravels * (prestigeGain + levelMultiplier * nutTimeTravelDamage)));
+	document.getElementById('nutUniversalDominationTotalDmg').innerHTML = kFormatter(round(nutUniversalDominations * (prestigeGain + levelMultiplier * nutUniversalDominationDamage)));
+	document.getElementById('nutGodTotalDmg').innerHTML = kFormatter(round(nutGods * (prestigeGain + levelMultiplier * nutGodDamage)));
+	document.getElementById('nutAfterlifeTotalDmg').innerHTML = kFormatter(round(nutAfterlives * (prestigeGain + levelMultiplier * nutAfterlifeDamage)));
 }
 
 function UpdateCosts(){
@@ -1532,7 +1696,11 @@ function UpdateCosts(){
 	nutEmpireCostNext = Math.floor(20000000 * Math.pow(1.1,nutEmpires));
 	nutWorldControlCostNext = Math.floor(330000000 * Math.pow(1.1,nutWorldControls));
 	nutGalacticReignCostNext = Math.floor(1500000000 * Math.pow(1.1,nutGalacticReigns));
-	deezNutGuyCostNext = Math.floor(7500000000 * Math.pow(1.1,deezNutGuys));
+	deezNutGuyCostNext = Math.floor(75000000000 * Math.pow(1.1,deezNutGuys));
+	nutTimeTravelCostNext = Math.floor(1000000000000 * Math.pow(1.1,nutTimeTravels));
+	nutUniversalDominationCostNext = Math.floor(40000000000000 * Math.pow(1.1,nutUniversalDominations));
+	nutGodCostNext = Math.floor(170000000000000 * Math.pow(1.1,nutGods));
+	nutAfterlifeCostNext = Math.floor(2000000000000000 * Math.pow(1.1,nutAfterlives));
 	document.getElementById('nutKidCost').innerHTML = kFormatter(nutKidCostNext);
 	document.getElementById('nutBoyCost').innerHTML = kFormatter(nutBoyCostNext);
 	document.getElementById('nutBoyBonusCost').innerHTML = kFormatter(nutBoyBonusCostNext);
@@ -1548,6 +1716,10 @@ function UpdateCosts(){
 	document.getElementById('nutWorldControlCost').innerHTML = kFormatter(nutWorldControlCostNext);
 	document.getElementById('nutGalacticReignCost').innerHTML = kFormatter(nutGalacticReignCostNext);
 	document.getElementById('deezNutGuyCost').innerHTML = kFormatter(deezNutGuyCostNext);
+	document.getElementById('nutTimeTravelCost').innerHTML = kFormatter(nutTimeTravelCostNext);
+	document.getElementById('nutUniversalDominationCost').innerHTML = kFormatter(nutUniversalDominationCostNext);
+	document.getElementById('nutGodCost').innerHTML = kFormatter(nutGodCostNext);
+	document.getElementById('nutAfterlifeCost').innerHTML = kFormatter(nutAfterlifeCostNext);
 }
 
 function UpdateLevel(){
@@ -1579,7 +1751,7 @@ function UpdateLevel(){
 }
 
 function UpdateDamage(){
-	totalDamage = round((prestigeGain + levelMultiplier) * (nutKidDamage * nutKids + nutBoyDamage * nutBoys + nutManDamage * nutMen + nutFarmDamage * nutFarms + nutFactoryDamage * nutFactories + nutBankDamage * nutBanks + nutEmpireDamage * nutEmpires + nutWorldControlDamage * nutWorldControls + nutGalacticReignDamage * nutGalacticReigns + deezNutGuyDamage * deezNutGuys));
+	totalDamage = round((prestigeGain + levelMultiplier) * (nutKidDamage * nutKids + nutBoyDamage * nutBoys + nutManDamage * nutMen + nutFarmDamage * nutFarms + nutFactoryDamage * nutFactories + nutBankDamage * nutBanks + nutEmpireDamage * nutEmpires + nutWorldControlDamage * nutWorldControls + nutGalacticReignDamage * nutGalacticReigns + deezNutGuyDamage * deezNutGuys + nutTimeTravelDamage * nutTimeTravels + nutUniversalDominationDamage * nutUniversalDominations + nutGodDamage * nutGods + nutAfterlifeDamage * nutAfterlives));
 }
 
 function CheckMobile(){

@@ -20,7 +20,7 @@
 		<div id="container">
 			<main>
 				<div id="nutsim">
-					nut simulator v1.7
+					nut simulator v1.8
 				</div>
 				<div id="time">
 					played for 0:00:00
@@ -67,6 +67,13 @@
 						<div class="buyNutGalacticReign" style="display:none">Galactic Nut Reigns: <span id="nutGalacticReigns">0</span> - <span id="nutGalacticReignTotalDmg">1</span> n/s</div>
 
 						<div class="buyDeezNutGuy" style="display:none">Deez Nut Guys: <span id="deezNutGuys">0</span> - <span id="deezNutGuyTotalDmg">1</span> n/s</div>
+						<div class="buyNutTimeTravel" style="display:none">Time Travelling Nuts: <span id="nutTimeTravels">0</span> - <span id="nutTimeTravelTotalDmg">1</span> n/s</div>
+						
+						<div class="buyNutUniversalDomination" style="display:none">Universal Nut Dominations: <span id="nutUniversalDominations">0</span> - <span id="nutUniversalDominationTotalDmg">1</span> n/s</div>
+						
+						<div class="buyNutGod" style="display:none">Nut Gods: <span id="nutGods">0</span> - <span id="nutGodTotalDmg">1</span> n/s</div>
+						
+						<div class="buyNutAfterlife" style="display:none">Nut Afterlives: <span id="nutAfterlives">0</span> - <span id="nutAfterlifeTotalDmg">1</span> n/s</div>
 						<hr size="1" noshade color=black id="line">
 						<div class="buyNutBoyBonus" style="display:none">Bigger Nuts: <span id="nutBoyBonuses">0</span></div>
 						
@@ -119,6 +126,10 @@
 					<button onclick="buy('nutWorldControl')" class="buyNutWorldControl" style="display:none;background-color: #9B59B6"><b>World Nut Control</b><br>(+<span id="nutWorldControlDamage"> </span> nuts/sec)<br>- <span id="nutWorldControlCost">330000000</span> nuts</button>
 					<button onclick="buy('nutGalacticReign')" class="buyNutGalacticReign" style="display:none;background-color: #F62459"><b>Galactic Nut Reign</b><br>(+<span id="nutGalacticReignDamage"> </span> nuts/sec)<br>- <span id="nutGalacticReignCost">5100000000</span> nuts</button>
 					<button onclick="buy('deezNutGuy')" class="buyDeezNutGuy" style="display:none;background-color: #F22613"><b>Deez Nut Guy</b><br>(+<span id="deezNutGuyDamage"> </span> nuts/sec)<br>- <span id="deezNutGuyCost">7500000000</span> nuts</button>
+					<button onclick="buy('nutTimeTravel')" class="buyNutTimeTravel" style="display:none;background-color: #96281B"><b>Time Travelling Nuts</b><br>(+<span id="nutTimeTravelDamage"> </span> nuts/sec)<br>- <span id="nutTimeTravelCost">1000000000000</span> nuts</button>
+					<button onclick="buy('nutUniversalDomination')" class="buyNutUniversalDomination" style="display:none;background-color: #72231a"><b>Universal Nut Domination</b><br>(+<span id="nutUniversalDominationDamage"> </span> nuts/sec)<br>- <span id="nutUniversalDominationCost">40000000000000</span> nuts</button>
+					<button onclick="buy('nutGod')" class="buyNutGod" style="display:none;background-color: #2d0e0b"><b>Nut God</b><br>(+<span id="nutGodDamage"> </span> nuts/sec)<br>- <span id="nutGodCost">170000000000000</span> nuts</button>
+					<button onclick="buy('nutAfterlife')" id="redglow" class="buyNutAfterlife" style="display:none;background-image:url('images/colours.gif');-webkit-backface-visibility: hidden;"><b>Nut Afterlife</b><br>(+<span id="nutAfterlifeDamage"> </span> nuts/sec)<br>- <span id="nutAfterlifeCost">2000000000000000</span> nuts</button>
 				</div>
 
 				<div id="bottomLeft">
@@ -134,7 +145,7 @@
 					<span id="saved"></span>
 				</div>
 
-				<button onclick="ShowGambling()" class="button" style="position:absolute;top:12%;left:40.5%;z-index:999;padding:1.5vw 2.5vw;background-color:#D35400">gamble</button>
+				<button id="gamblingButton" onclick="ShowGambling()" class="button" style="display:none;position:absolute;top:12%;left:40.5%;z-index:999;padding:1.5vw 2.5vw;background-color:#D35400">gamble</button>
 				<div id="gambling">
 					<div style="font-size:6vw;font-weight:bold;position:relative;bottom:8px;text-align:center">nut gambling</div>
 					exact nuts: <span id="nutsGamble" style="pointer-events:auto">0</span>
@@ -179,7 +190,7 @@
 					<br>
 				</div>
 
-				<button onclick="ShowPrestige()" class="button" style="position:absolute;top:12%;left:57.5%;z-index:999;padding:1.5vw 2.5vw">prestige</button>
+				<button onclick="ShowPrestige()" id="prestigeButton" class="button" style="display:none;position:absolute;top:12%;left:57.5%;z-index:999;padding:1.5vw 2.5vw">prestige</button>
 				<div id="prestige">
 					<div style="font-size:6vw;font-weight:bold;position:relative;bottom:8px;text-align:center">prestige</div>
 					current level: <span id="prestigeLevel">0</span>

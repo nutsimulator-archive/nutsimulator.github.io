@@ -71,7 +71,7 @@ main {
     left: 50%;
     -webkit-transform: translate(-50%, -50%);
     position: absolute;
-	width: 60%;
+	width: 70%;
 }
 
 #middleNutContent {
@@ -350,7 +350,7 @@ button {
 	border-radius: 0.75vw;
 	box-shadow: 0 6px #999;
 	background-color: #444444;
-	transition: 0.5s;
+	transition: 0.3s;
 }
 
 button:hover {
@@ -365,6 +365,11 @@ button:active {
     -filter: brightness(80%);
 	box-shadow: 0 3px #666;
 	transform: translateY(2px);
+	transition: 0.05s;
+}
+
+#redglow:hover {
+	box-shadow: 0px 0px 50px 0.4vw #a30e0e;
 }
 
 @-webkit-keyframes growStart {
