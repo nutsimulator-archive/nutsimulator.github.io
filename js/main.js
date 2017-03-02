@@ -875,7 +875,7 @@ function ShowLevel(){
 	var upgradeMenu = document.getElementsByClassName("item2")[0];
 	document.getElementById("prestigeLevel").innerHTML = level;
 	document.getElementById("prestigeDamage").innerHTML = totalDamage;
-	document.getElementById("prestigeGain").innerHTML = round((level * 100000000 + nutKids * nutKidDamage + nutMen * nutManDamage + nutFarms * nutFarmDamage + nutFactories * nutFactoryDamage + nutBanks * nutBankDamage + nutEmpires * nutEmpireDamage + nutWorldControls * nutWorldControlDamage+ nutGalacticReigns * nutGalacticReignDamage + deezNutGuys * deezNutGuyDamage)/10000000);
+	document.getElementById("prestigeGain").innerHTML = round((level * 10000 + nutKids * nutKidDamage + nutMen * nutManDamage + nutFarms * nutFarmDamage + nutFactories * nutFactoryDamage + nutBanks * nutBankDamage + nutEmpires * nutEmpireDamage + nutWorldControls * nutWorldControlDamage+ nutGalacticReigns * nutGalacticReignDamage + deezNutGuys * deezNutGuyDamage)/10000000);
 
 	if(page == "mobile.html"){
 		if(levelDiv.style.width < "100px"){
@@ -977,7 +977,7 @@ function ShowPrestige(){
 	var upgradeMenu = document.getElementsByClassName("item2")[0];
 	document.getElementById("prestigeLevel").innerHTML = level;
 	document.getElementById("prestigeDamage").innerHTML = totalDamage;
-	document.getElementById("prestigeGain").innerHTML = round((level * 100000000 + nutKids * nutKidDamage + nutMen * nutManDamage + nutFarms * nutFarmDamage + nutFactories * nutFactoryDamage + nutBanks * nutBankDamage + nutEmpires * nutEmpireDamage + nutWorldControls * nutWorldControlDamage+ nutGalacticReigns * nutGalacticReignDamage + deezNutGuys * deezNutGuyDamage)/10000000);
+	document.getElementById("prestigeGain").innerHTML = round((level * 10000 + nutKids * nutKidDamage + nutMen * nutManDamage + nutFarms * nutFarmDamage + nutFactories * nutFactoryDamage + nutBanks * nutBankDamage + nutEmpires * nutEmpireDamage + nutWorldControls * nutWorldControlDamage+ nutGalacticReigns * nutGalacticReignDamage + deezNutGuys * deezNutGuyDamage)/10000000);
 	
 	if(page != "mobile.html"){
 			stopAudio(menuAudio);
@@ -1036,11 +1036,11 @@ function ShowPrestige(){
 }
 
 function Prestige(){
-	var tempGain = round((level * 100000000 + nutKids * nutKidDamage + nutMen * nutManDamage + nutFarms * nutFarmDamage + nutFactories * nutFactoryDamage + nutBanks * nutBankDamage + nutEmpires * nutEmpireDamage + nutWorldControls * nutWorldControlDamage+ nutGalacticReigns * nutGalacticReignDamage + deezNutGuys * deezNutGuyDamage)/10000000);
+	var tempGain = round((level * 10000 + nutKids * nutKidDamage + nutMen * nutManDamage + nutFarms * nutFarmDamage + nutFactories * nutFactoryDamage + nutBanks * nutBankDamage + nutEmpires * nutEmpireDamage + nutWorldControls * nutWorldControlDamage+ nutGalacticReigns * nutGalacticReignDamage + deezNutGuys * deezNutGuyDamage)/10000000);
 	if(tempGain >= 0.01){
 		if (confirm("are you sure you want to delete all progress and prestige with a " +  round(tempGain) + " nut bonus?")) {
 			deleted = true;
-			prestigeGain = prestigeGain + round((level * 100000000 + nutKids * nutKidDamage + nutMen * nutManDamage + nutFarms * nutFarmDamage + nutFactories * nutFactoryDamage + nutBanks * nutBankDamage + nutEmpires * nutEmpireDamage + nutWorldControls * nutWorldControlDamage+ nutGalacticReigns * nutGalacticReignDamage + deezNutGuys * deezNutGuyDamage)/10000000);
+			prestigeGain = prestigeGain + round((level * 10000 + nutKids * nutKidDamage + nutMen * nutManDamage + nutFarms * nutFarmDamage + nutFactories * nutFactoryDamage + nutBanks * nutBankDamage + nutEmpires * nutEmpireDamage + nutWorldControls * nutWorldControlDamage+ nutGalacticReigns * nutGalacticReignDamage + deezNutGuys * deezNutGuyDamage)/10000000);
 			Save();
 			
 			deleted = true;
